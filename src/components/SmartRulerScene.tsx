@@ -2,7 +2,6 @@ import React, { Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import {
   BakeShadows,
-  Environment,
   Html,
   OrbitControls,
   PerspectiveCamera,
@@ -48,7 +47,7 @@ export default function SmartRulerScene() {
       </div>
 
       <Canvas
-        shadows
+        shadows={{ type: THREE.PCFShadowMap }}
         dpr={[1, 2]}
         gl={{
           antialias: true,

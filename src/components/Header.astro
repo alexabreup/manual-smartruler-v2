@@ -4,8 +4,8 @@
   <div class="header-container">
     <div class="header-logo">
       <a href="/" class="logo-link">
-        <span class="material-symbols-outlined logo-icon">analytics</span>
-        <span class="logo-text">SMART RULER ELETROMIDIA</span>
+        <span class="logo-icon-img" aria-label="Eletromidia"></span>
+        <span class="logo-text">SMART RULER</span>
       </a>
     </div>
     
@@ -87,12 +87,28 @@
     color: var(--primary);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 30px;
     transition: color 0.2s;
   }
 
-  .logo-icon {
-    font-size: 32px;
+  .logo-icon-img {
+    height: 21px;
+    aspect-ratio: 10.83 / 19.71;
+    display: inline-block;
+    background-color: #ffffff; /* Dark mode: branco */
+    -webkit-mask-image: url('/eletromidia-logo.svg');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url('/eletromidia-logo.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: background-color 0.3s ease;
+  }
+
+  :global(.light) .logo-icon-img {
+    background-color: var(--primary); /* Light mode: laranja */
   }
 
   .logo-text {
@@ -176,4 +192,5 @@
   :global(.light) .theme-icon-light {
     display: inline-block;
   }
+
 </style>

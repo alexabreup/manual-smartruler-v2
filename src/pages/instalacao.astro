@@ -1,369 +1,457 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SmartRulerInstallScene from '../components/SmartRulerInstallScene';
 ---
 
-<Layout title="SmartRuler OS | Instalação">
-	<div class="page-container">
-    <div class="content-wrapper">
-      {/* Installation Hero */}
-      <div class="page-header">
-        <div class="corner-bracket tl"></div>
-        <div class="corner-bracket tr"></div>
-        <p class="module-id">MODULE_ID: INSTALL_01</p>
-        <h1 class="page-title">System Deployment</h1>
-        <p class="page-intro">
-          Follow the precise sequence for hardware calibration and firmware synchronization.
-        </p>
+<Layout title="Smart Ruler Eletromidia | Instalação">
+  <div class="max-w-4xl mx-auto p-4 flex flex-col gap-6">
+    
+    <!-- 3D Header -->
+    <div class="flex justify-between items-end border-b border-outline-variant pb-2">
+      <div>
+        <span class="text-10px text-on-surface-variant uppercase tracking-widest font-bold font-mono">MÓDULO INTERATIVO</span>
+        <h1 class="text-2xl font-bold uppercase tracking-tighter italic text-on-surface font-display">REGUA_3D_LIVE</h1>
       </div>
+      <div class="status-badge px-2 py-0-5 rounded-sm italic font-mono">SISTEMA_V2.04_READY</div>
+    </div>
 
-      {/* Step List */}
-      <div class="step-list">
-        {/* Step 1 */}
-        <div class="step-card">
-          <div class="step-row">
-            <div class="step-number">01</div>
-            <div class="step-body">
-              <div class="step-title-row">
-                <span class="material-symbols-outlined step-icon">power</span>
-                <h3 class="step-title">Initialization</h3>
-              </div>
-              <p class="step-text">Connect the Smart Ruler interface via USB-C to your workstation. Ensure the status LED flashes orange.</p>
-            </div>
+    <!-- Main Content Area -->
+    <div class="grid grid-cols-1 md-grid-cols-2 gap-6 items-start" id="interactive-content-wrapper">
+      
+      <!-- Three.js Canvas -->
+      <div class="canvas-container sharp-border border border-outline-variant" id="threejs-container">
+        <div class="absolute top-4 left-4 z-10">
+          <div class="flex items-center gap-2 text-10px text-primary font-bold font-mono">
+            <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+            VISUALIZAÇÃO EM TEMPO REAL
           </div>
         </div>
-
-        {/* Step 2 - Active State */}
-        <div class="step-card active">
-          <div class="active-badge"></div>
-          <div class="step-row">
-            <div class="step-number primary">02</div>
-            <div class="step-body">
-              <div class="step-title-row">
-                <span class="material-symbols-outlined step-icon primary">sync</span>
-                <h3 class="step-title primary-text">Firmware Sync</h3>
-              </div>
-              <p class="step-text primary-font">Launch the SMART RULER desktop client and select "Connect Device" from the primary dashboard.</p>
-              <div class="step-media">
-                <img class="step-img" alt="Software Interface Sync" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0LXAr4o9nJ7OR7sUzBKhghZG2pzKmpOYAy3aLJ0_S6MaQeniJu3PAMjjuRKEvAXbIFGk8lq8WSNrER5upPVay_xd8O1WJ5sFtJPr6zh1aoRdqEXBrBh-g-WIcx2wNJocEcq-1XteN_lYMk3euRYtbtLwgXH4NXbmZDv0JkFvChXNa0CN_658VhViThYR0fWs9S_7Q591D6DJBjMzO71wW0KVLd-I6dtbqSayyZWbirxbDXc5-qb-FeuV96DjQ6LzOwyhk9WHy9u4" />
-                <p class="media-caption">FIG. 02: SOFTWARE INTERFACE SYNC</p>
-              </div>
-            </div>
-          </div>
+        <div class="absolute bottom-4 right-4 z-10 text-10px text-on-surface-variant font-mono">
+          COORD: 23.5505° S, 46.6333° W
         </div>
-
-        {/* Step 3 */}
-        <div class="step-card disabled">
-          <div class="step-row">
-            <div class="step-number disabled">03</div>
-            <div class="step-body">
-              <div class="step-title-row">
-                <span class="material-symbols-outlined step-icon">straighten</span>
-                <h3 class="step-title">Calibration</h3>
-              </div>
-              <p class="step-text">Place the ruler on a flat, non-reflective surface. Press the 'CAL' button for 3 seconds until synchronized.</p>
-            </div>
-          </div>
-        </div>
+        <SmartRulerInstallScene client:load />
       </div>
 
-      {/* Progress Tracking */}
-      <div class="progress-section">
-        <div class="progress-labels">
-          <span>DEPLOYMENT STATUS</span>
-          <span>50% COMPLETE</span>
-        </div>
-        <div class="progress-segments">
-          {[...Array(10)].map((_, i) => (
-            <div class={`segment ${i < 5 ? 'active' : ''}`}></div>
-          ))}
+      <!-- Installation Steps -->
+      <div class="bg-surface-container-low p-4 sharp-border border border-outline-variant h-full">
+        <h2 class="text-xs font-bold text-on-surface-variant mb-4 uppercase tracking-widest font-mono">PROTOCOLO DE INSTALAÇÃO</h2>
+        
+        <div class="flex flex-col gap-2">
+          <button class="step-btn active w-full text-left p-3 flex gap-4 items-center group" onclick="updateStep(1)">
+            <span class="font-mono text-on-surface-variant group-active-text-primary">01</span>
+            <div>
+              <div class="text-sm font-bold uppercase font-display">Cabo de Alimentação</div>
+              <div class="text-10px text-on-surface-variant font-mono">CONEXÃO_INPUT_AC</div>
+            </div>
+          </button>
+          
+          <button class="step-btn w-full text-left p-3 flex gap-4 items-center group" onclick="updateStep(2)">
+            <span class="font-mono text-on-surface-variant group-active-text-primary">02</span>
+            <div>
+              <div class="text-sm font-bold uppercase font-display">Alimentação Modem</div>
+              <div class="text-10px text-on-surface-variant font-mono">GATEWAY_READY</div>
+            </div>
+          </button>
+          
+          <button class="step-btn w-full text-left p-3 flex gap-4 items-center group" onclick="updateStep(3)">
+            <span class="font-mono text-on-surface-variant group-active-text-primary">03</span>
+            <div>
+              <div class="text-sm font-bold uppercase font-display">Conexão PC NUC</div>
+              <div class="text-10px text-on-surface-variant font-mono">CORE_SYNC</div>
+            </div>
+          </button>
+          
+          <button class="step-btn w-full text-left p-3 flex gap-4 items-center group" onclick="updateStep(4)">
+            <span class="font-mono text-on-surface-variant group-active-text-primary">04</span>
+            <div>
+              <div class="text-sm font-bold uppercase font-display">Cabo Ethernet</div>
+              <div class="text-10px text-on-surface-variant font-mono">DATA_LINK_ESTABLISHED</div>
+            </div>
+          </button>
         </div>
       </div>
+      
+    </div>
 
-      {/* Navigation Footer */}
-      <div class="nav-footer">
-        <a href="/" class="nav-link-btn prev">
-          <span class="material-symbols-outlined">arrow_back</span>
-          <span class="btn-text">VOLTAR</span>
-        </a>
-        <a href="/especificacoes" class="nav-link-btn next">
-          <span class="btn-text">PRÓXIMO</span>
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </a>
+    <!-- Technical Footer Info -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-surface-container-low p-3 border-l-2 border-primary shadow-sm">
+        <div class="text-10px text-on-surface-variant font-mono">STATUS_MCU</div>
+        <div class="text-xs font-bold uppercase text-on-surface font-display">ESP32_LINK_ACTIVE</div>
+      </div>
+      <div class="bg-surface-container-low p-3 border-l-2 border-primary shadow-sm">
+        <div class="text-10px text-on-surface-variant font-mono">FIRMWARE</div>
+        <div class="text-xs font-bold uppercase text-on-surface font-display">QUANTUM_V4_SECURE</div>
+      </div>
+    </div>
+
+    {/* Documentação do Manual */}
+    <div class="manual-content mt-8">
+      <p class="lead-text">
+        Este manual prático orienta o passo a passo de instalação e conexão da <strong>Smart Ruler (Régua Inteligente IoT)</strong> nos MUBs (Mobiliários Urbanos para Informação) da Eletromidia. Siga a ordem rigorosamente para garantir o funcionamento do IoT Hub e evitar retrabalhos.
+      </p>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">1. Check-list Pré-Instalação (Antes de iniciar)</h2>
+      <p>A Smart Ruler não acompanha o cabo de força. Antes de subir no equipamento ou iniciar a manutenção, garanta que você tem em mãos:</p>
+      <ul class="checklist">
+        <li><span class="checkbox"></span> <strong>Chave de boca de 8mm</strong> (ou chave canhão/catraca compatível).</li>
+        <li><span class="checkbox"></span> <strong>Cabo de energia tripolar</strong> (necessário para alimentação principal).</li>
+        <li><span class="checkbox"></span> <strong>Smart Ruler</strong> e a <strong>Barra de travamento metálica</strong> (inclusa com o equipamento).</li>
+        <li><span class="checkbox"></span> <strong>Parafuso M5 sextavado</strong> (para a fixação).</li>
+        <li><span class="checkbox"></span> Multímetro (recomendado para atestar a tensão do MUB).</li>
+      </ul>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">2. Fixação Mecânica no MUB</h2>
+      <p>A régua deve ser instalada de forma que os cabos fiquem organizados e o acesso futuro seja facilitado.</p>
+      <ol class="ordered-list">
+        <li><strong>Localize o Ponto Exato:</strong> Identifique o <strong>chassi superior exposto</strong> do MUB. Esta é a área homologada para garantir ventilação e otimização de espaço.</li>
+        <li><strong>Posicione a Régua:</strong> Encaixe a Smart Ruler juntamente com a <strong>barra de travamento metálica</strong>.</li>
+        <li><strong>Trave o Equipamento:</strong> Utilize a chave de boca de 8mm para apertar firmemente o <strong>parafuso M5 sextavado</strong>.</li>
+      </ol>
+      <p class="attention-text"><em>Atenção:</em> Certifique-se de que a régua não esteja solta ou vibrando, pois isso pode causar desconexão dos cabos com o tempo.</p>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">3. Alimentação Elétrica (Energização)</h2>
+      <p>A Smart Ruler foi projetada para facilitar a vida em campo, sendo <strong>Bivolt Automática (110V/220V)</strong>. Não há chave seletora de tensão.</p>
+      <ol class="ordered-list">
+        <li><strong>Inspeção do Fusível:</strong> Antes de plugar qualquer coisa, verifique visualmente se o <strong>fusível de 10 Amperes</strong> está íntegro e bem encaixado no compartimento.</li>
+        <li><strong>Conexão Principal:</strong> Conecte o <strong>cabo de energia tripolar</strong> na entrada de alimentação da Smart Ruler.</li>
+        <li><strong>Energize:</strong> Ligue a outra ponta do cabo na rede de alimentação do MUB.</li>
+      </ol>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">4. Mapeamento das Tomadas (Obrigatório)</h2>
+      <p>A ordem de ligação é essencial para que o acionamento remoto via <strong>IoT Hub da Eletromidia</strong> funcione corretamente. <strong class="text-error">Nunca inverta o PC e o Modem.</strong></p>
+      <p>Siga a ordem física da régua <strong>(De Cima para Baixo)</strong>:</p>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Nome na Régua</th>
+              <th>O que ligar aqui?</th>
+              <th>Comportamento / Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1ª (Topo)</strong></td>
+              <td><code>ENTRADA DIRETA</code></td>
+              <td><strong>Uso do Técnico (Ferramentas)</strong></td>
+              <td><strong>Energia Constante.</strong> Não possui controle remoto. Feita para você plugar seu notebook, carregador ou ferramenta durante a manutenção.</td>
+            </tr>
+            <tr>
+              <td><strong>2ª</strong></td>
+              <td><code>MODEM</code></td>
+              <td><strong>Modem do MUB</strong></td>
+              <td><strong>Controlada via IoT Hub.</strong> Dedicada exclusivamente para manter a conectividade da tela.</td>
+            </tr>
+            <tr>
+              <td><strong>3ª</strong></td>
+              <td><code>PC</code></td>
+              <td><strong>PC NUC do MUB</strong></td>
+              <td><strong>Controlada via IoT Hub.</strong> Dedicada ao player/computador que roda a mídia.</td>
+            </tr>
+            <tr>
+              <td><strong>4ª (Base)</strong></td>
+              <td><code>TOMADA 3</code></td>
+              <td><strong>Vazia / Novos Dispositivos</strong></td>
+              <td><strong>Controlada via IoT Hub.</strong> Deixe livre. É a porta de expansão para implementações futuras.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">5. Validação e Testes no Local</h2>
+      <p>A Smart Ruler não é apenas um filtro de linha, ela é o centro do ecossistema IoT do MUB. Após conectar tudo:</p>
+      <ol class="ordered-list">
+        <li>Verifique se o <strong>Modem</strong> e o <strong>PC NUC</strong> iniciaram corretamente após serem plugados nas tomadas 2 e 3.</li>
+        <li>Confirme com o Centro de Controle (NOC / Suporte Técnico) se o equipamento já está visível na plataforma <strong>IoT Hub da Eletromidia</strong>.</li>
+        <li>Solicite um teste de <strong>Acionamento Remoto</strong> (pedir para o suporte desligar e ligar a tomada do PC NUC, por exemplo) para atestar a comunicação.</li>
+      </ol>
+
+      <hr class="divider" />
+
+      <h2 class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl">6. Dicas de Manutenção Rápida (Troubleshooting)</h2>
+      <p>Se o equipamento não ligar ou apresentar falha de comunicação, faça estas validações antes de acionar o suporte:</p>
+      <ul class="bullet-list">
+        <li><strong>MUB totalmente apagado:</strong> Desplugue o cabo tripolar e teste a integridade do <strong>fusível de 10A</strong>. Se estiver rompido, substitua.</li>
+        <li><strong>PC ou Modem não ligam:</strong> Verifique se não foram plugados por engano na "Tomada 3" (que pode estar desativada via software pelo IoT Hub) em vez das tomadas corretas (2 e 3).</li>
+        <li><strong>Mau contato:</strong> Garanta que os plugues das fontes do PC e do Modem estão inseridos até o fim. Excesso de umidade ou cabos esticados podem afrouxar a conexão.</li>
+      </ul>
+
+      <div class="alert-box">
+        <strong>Precisa de ajuda avançada?</strong> Em caso de falhas não resolvidas na documentação, isole o problema (teste ligar o PC na Entrada Direta para garantir que não é a fonte do PC queimada) e entre em contato com o Suporte Técnico da Eletromidia relatando os testes já realizados.
       </div>
     </div>
   </div>
 </Layout>
 
+<script is:inline>
+  window.updateStep = function(stepIndex) {
+    const buttons = document.querySelectorAll('.step-btn');
+    buttons.forEach((btn, idx) => {
+      if(idx === stepIndex - 1) {
+        btn.classList.add('active');
+        btn.querySelector('span.font-mono').classList.add('group-active-text-primary');
+      } else {
+        btn.classList.remove('active');
+        btn.querySelector('span.font-mono').classList.remove('group-active-text-primary');
+      }
+    });
+    
+    // Dispatch custom event so the React Three.js component can pick it up
+    window.dispatchEvent(new CustomEvent('smartruler:step', { detail: { step: stepIndex } }));
+  }
+</script>
+
 <style>
-  .page-container {
-    padding: 16px;
-    padding-bottom: 48px;
+  /* Mimicking Tailwind classes and formatting exact to code.html */
+  .max-w-4xl { max-width: 56rem; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .p-4 { padding: 1rem; }
+  .p-3 { padding: 0.75rem; }
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .gap-6 { gap: 1.5rem; }
+  .gap-4 { gap: 1rem; }
+  .gap-2 { gap: 0.5rem; }
+  .justify-between { justify-content: space-between; }
+  .items-end { align-items: flex-end; }
+  .items-center { align-items: center; }
+  .items-start { align-items: flex-start; }
+  .border-b { border-bottom-width: 1px; border-bottom-style: solid; }
+  .border-l-2 { border-left-width: 2px; border-left-style: solid; }
+  .border { border-width: 1px; border-style: solid; }
+  .pb-2 { padding-bottom: 0.5rem; }
+  .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .py-0-5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+  .rounded-sm { border-radius: 0.125rem; }
+  .rounded-full { border-radius: 9999px; }
+  .italic { font-style: italic; }
+  .tracking-widest { letter-spacing: 0.1em; }
+  .tracking-tighter { letter-spacing: -0.05em; }
+  .uppercase { text-transform: uppercase; }
+  .font-bold { font-weight: 700; }
+  .text-10px { font-size: 10px; line-height: 1; }
+  .text-xs { font-size: 0.75rem; line-height: 1rem; }
+  .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+  .text-xl { font-size: 1.25rem; }
+  .w-full { width: 100%; }
+  .h-full { height: 100%; }
+  .w-2 { width: 0.5rem; }
+  .h-2 { height: 0.5rem; }
+  .text-left { text-align: left; }
+  .absolute { position: absolute; }
+  .top-4 { top: 1rem; }
+  .left-4 { left: 1rem; }
+  .bottom-4 { bottom: 1rem; }
+  .right-4 { right: 1rem; }
+  .z-10 { z-index: 10; }
+  .grid { display: grid; }
+  .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+  .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+  .mt-8 { margin-top: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  
+  @media (min-width: 768px) {
+    .md-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
-  .content-wrapper {
-    max-width: 42rem;
-    margin: 0 auto;
+  /* Color Mappings to System Design CSS Variables */
+  .text-on-surface-variant { color: var(--on-surface-variant); }
+  .text-on-surface { color: var(--on-surface); }
+  .text-primary { color: var(--primary); }
+  .bg-primary { background-color: var(--primary); }
+  .bg-surface-container-low { background-color: var(--surface-container-low); }
+  .border-outline-variant { border-color: var(--border-color); }
+  .border-primary { border-color: var(--primary); }
+
+  /* Font Families */
+  .font-mono { font-family: var(--font-mono); }
+  .font-display { font-family: var(--font-display); }
+
+  /* Interactive Elements specific to code.html */
+  .sharp-border { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%); }
+  
+  .canvas-container { 
+    height: 535px; 
+    width: 100%; 
+    position: relative; 
+    background: radial-gradient(circle at center, var(--surface-bright) 0%, var(--surface-container-low) 100%); 
   }
-
-  .page-header {
-    margin-bottom: 48px;
-    position: relative;
-    padding-top: 24px;
+  
+  .step-btn { 
+    transition: all 0.3s ease; 
+    border-left: 3px solid transparent; 
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
   }
-
-  .corner-bracket {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-top: 2px solid var(--primary);
-    opacity: 0.8;
+  
+  .step-btn:hover { background: rgba(var(--primary-rgb), 0.05); }
+  
+  .step-btn.active { 
+    border-left-color: var(--primary); 
+    background: rgba(var(--primary-rgb), 0.08); 
   }
-
-  .corner-bracket.tl { top: -16px; left: -16px; border-left: 2px solid var(--primary); }
-  .corner-bracket.tr { top: -16px; right: -16px; border-right: 2px solid var(--primary); }
-
-  .module-id {
-    font-family: var(--font-mono);
+  
+  .group-active-text-primary {
     color: var(--primary);
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
   }
 
-  .page-title {
-    font-family: var(--font-display);
-    font-size: 32px;
-    text-transform: uppercase;
-    margin: 0 0 16px 0;
+  .status-badge { 
+    background: rgba(var(--primary-rgb), 0.1); 
+    border: 1px solid var(--primary); 
+    color: var(--primary); 
   }
 
-  .page-intro {
-    color: var(--on-surface-variant);
-    border-left: 2px solid var(--primary);
-    padding-left: 16px;
-    font-style: italic;
-    margin: 0;
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+  .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+  /* Markdown Content Styles */
+  .manual-content {
     font-family: var(--font-body);
-  }
-
-  .step-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .step-card {
-    background-color: var(--surface-container);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 24px;
-    position: relative;
-    transition: all 0.3s;
-  }
-
-  .step-card.active {
-    border: 2px solid var(--primary);
-  }
-
-  .step-card.disabled {
-    opacity: 0.6;
-  }
-
-  .active-badge {
-    position: absolute;
-    right: -10px;
-    top: -10px;
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary);
-    transform: rotate(45deg);
-  }
-
-  .step-row {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  @media (min-width: 640px) {
-    .step-row {
-      flex-direction: row;
-    }
-  }
-
-  .step-number {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(var(--primary-rgb), 0.2);
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    flex-shrink: 0;
-  }
-
-  .step-number.primary {
-    background-color: var(--primary);
-    color: black;
-  }
-
-  .step-number.disabled {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: var(--on-surface-variant);
-  }
-
-  .step-body {
-    flex-grow: 1;
-  }
-
-  .step-title-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
-  .step-icon {
-    color: var(--primary);
-    font-size: 18px;
-  }
-
-  .step-icon.primary { color: var(--primary); }
-
-  .step-title {
-    font-family: var(--font-display);
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0;
-  }
-
-  .step-title.primary-text {
-    color: var(--primary);
-    font-weight: bold;
-  }
-
-  .step-text {
-    color: var(--on-surface-variant);
-    font-family: var(--font-body);
-    margin: 0;
     line-height: 1.6;
-  }
-
-  .step-text.primary-font {
     color: var(--on-surface);
   }
 
-  .step-media {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(var(--primary-rgb), 0.5);
-    padding: 16px;
+  .manual-content p {
+    margin-bottom: 16px;
+  }
+
+  .lead-text {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--on-surface-variant);
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 32px 0;
+  }
+
+  .checklist, .bullet-list, .ordered-list {
+    margin-bottom: 24px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .checklist li, .bullet-list li, .ordered-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .checklist .checkbox {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--on-surface-variant);
+    border-radius: 2px;
+  }
+
+  .bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .ordered-list {
+    counter-reset: step-counter;
+  }
+
+  .ordered-list li::before {
+    counter-increment: step-counter;
+    content: counter(step-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-family: var(--font-mono);
+  }
+
+  .attention-text {
+    background: rgba(var(--primary-rgb), 0.1);
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
     margin-top: 16px;
   }
 
-  .step-img {
-    width: 100%;
-    filter: grayscale(1) brightness(0.75) contrast(1.25);
-    margin-bottom: 8px;
+  .text-error {
+    color: var(--error);
   }
 
-  .media-caption {
+  .table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 24px;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 600px;
+  }
+
+  .data-table th, .data-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .data-table th {
+    background-color: var(--surface-container-low);
+    color: var(--on-surface-variant);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .data-table td code {
+    background-color: var(--surface-container);
+    padding: 4px 8px;
+    border-radius: 4px;
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 0;
-    letter-spacing: -0.05em;
   }
 
-  .progress-section {
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .alert-box {
+    background-color: var(--surface-container-high);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    margin-top: 32px;
+    border-radius: 4px;
   }
 
-  .progress-labels {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: 10px;
+  .alert-box strong {
     color: var(--primary);
-    font-weight: bold;
-  }
-
-  .progress-segments {
-    display: flex;
-    gap: 4px;
-    height: 8px;
-  }
-
-  .segment {
-    flex: 1;
-    background-color: var(--surface-bright);
-  }
-
-  .segment.active {
-    background-color: var(--primary);
-  }
-
-  .nav-footer {
-    margin-top: 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-bottom: 48px;
-  }
-
-  @media (min-width: 640px) {
-    .nav-footer {
-      flex-direction: row;
-    }
-  }
-
-  .nav-link-btn {
-    flex: 1;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px;
-    font-family: var(--font-mono);
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.2s;
-  }
-
-  .nav-link-btn.prev {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--on-surface);
-  }
-
-  .nav-link-btn.prev:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
-  .nav-link-btn.next {
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
-    color: black;
-  }
-
-  .nav-link-btn.next:hover {
-    filter: brightness(1.1);
-  }
-
-  .nav-link-btn:active {
-    transform: scale(0.95);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
   }
 </style>

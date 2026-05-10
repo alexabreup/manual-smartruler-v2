@@ -1,0 +1,377 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="SmartRuler OS | Introdução">
+	<div class="page-container">
+    <div class="content-wrapper">
+      {/* Introduction Hero */}
+      <div class="page-header">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <p class="module-id">MODULE_ID: INTRO_00</p>
+        <h1 class="page-title">Introdução</h1>
+        <p class="page-intro">
+          Bem-vindo à Documentação Técnica da Smart Ruler. Este documento é o Manual de Instalação, Especificações e Uso da Smart Ruler Eletromidia.
+        </p>
+      </div>
+
+      <div class="text-content">
+        <div class="text-block">
+          <p>
+            Desenvolvida pela <strong>Equipe de Eletrônica do Departamento de Projetos da Eletromidia</strong>, a Smart Ruler é a nossa régua elétrica inteligente focada em Internet das Coisas (IoT).
+          </p>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined section-icon">info</span>
+            <h2 class="section-title">Sobre a Smart Ruler</h2>
+          </div>
+          <div class="text-block">
+            <p>
+              A Smart Ruler não é apenas um distribuidor de energia; ela é um dispositivo ativo essencial para a modernização, telemetria e o gerenciamento eficiente dos nossos ativos de campo, como os Mobiliários Urbanos para Informação (MUBs) e as telas em shoppings ou transportes.
+            </p>
+            <p>
+              Ela atua como o núcleo de controle de energia dos equipamentos, permitindo o acionamento e desacionamento remoto e individualizado de até quatro tomadas por meio de relés. Controlada por um microcontrolador <strong>ESP32</strong>, a régua garante conectividade estável, recebendo comandos e enviando os status da operação diretamente para a nossa <strong>Plataforma IoT Hub</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined section-icon">problem</span>
+            <h2 class="section-title">Problemas e Necessidades Resolvidas</h2>
+          </div>
+          <div class="text-block">
+            <p>
+              No ambiente dinâmico de Out-of-Home (OOH) e mídia DOOH, o <em>uptime</em> (tempo de tela ativa) é o nosso principal produto. A Smart Ruler foi projetada para atacar gargalos diretos da operação:
+            </p>
+            <ul class="custom-list">
+              <li>
+                <span class="list-bullet">01</span>
+                <div>
+                  <strong>Redução Drástica de Deslocamentos (Visitas Técnicas):</strong> Historicamente, o travamento de componentes lógicos (como o PC NUC ou o Modem/Roteador) exigia o envio de um técnico ao local para realizar um simples "hard reset" físico (tirar e colocar na tomada). Com a Smart Ruler, o CCO realiza o reset remotamente em poucos segundos.
+                </div>
+              </li>
+              <li>
+                <span class="list-bullet">02</span>
+                <div>
+                  <strong>Prevenção e Redução de Downtime:</strong> Maior velocidade de reestabelecimento dos equipamentos, garantindo os SLAs (Acordos de Nível de Serviço) das campanhas dos anunciantes e evitando perdas de veiculação.
+                </div>
+              </li>
+              <li>
+                <span class="list-bullet">03</span>
+                <div>
+                  <strong>Gerenciamento e Eficiência Energética:</strong> Permite desligar remotamente tomadas específicas (como telas auxiliares ou iluminação) em horários pré-programados, adequando o funcionamento às regras do local de instalação (ex: encerramento do expediente de um shopping).
+                </div>
+              </li>
+              <li>
+                <span class="list-bullet">04</span>
+                <div>
+                  <strong>Visibilidade e Diagnóstico Remoto:</strong> Facilita a identificação sobre se uma falha é de energia no local, falha de conexão do modem, ou travamento do player.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined section-icon">memory</span>
+            <h2 class="section-title">Especificações e Infraestrutura</h2>
+          </div>
+          <div class="text-block">
+            <p>
+              Para a implantação, a Smart Ruler possui características desenvolvidas sob medida para a operação da Eletromidia:
+            </p>
+            <ul class="spec-list">
+              <li>
+                <span class="material-symbols-outlined spec-icon">wifi</span>
+                <div><strong>Processamento e Conectividade:</strong> Microcontrolador ESP32 com Wi-Fi embutido, configurado para comunicação MQTT segura.</div>
+              </li>
+              <li>
+                <span class="material-symbols-outlined spec-icon">electrical_services</span>
+                <div><strong>Capacidade de Carga:</strong> 4 tomadas de saída independentes (ex: 1 para Modem, 1 para PC NUC, 2 para serviço/telas futuras).</div>
+              </li>
+              <li>
+                <span class="material-symbols-outlined spec-icon">bolt</span>
+                <div><strong>Tensão de Operação:</strong> Compatível com rede elétrica padrão operada nos painéis da Eletromidia (Bivolt).</div>
+              </li>
+              <li>
+                <span class="material-symbols-outlined spec-icon">architecture</span>
+                <div>
+                  <strong>Requisitos de Infraestrutura Local:</strong>
+                  <ul class="sub-list">
+                    <li>Espaço para fixação padronizada no chassi interno do MUB/Totem.</li>
+                    <li>Conexão de internet viabilizada pelo próprio Modem embarcado no mobiliário (Wi-Fi local da caixa).</li>
+                    <li>Alimentação elétrica principal chegando diretamente do disjuntor do mobiliário para a entrada da régua.</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined section-icon">hub</span>
+            <h2 class="section-title">Integração e Gerenciamento</h2>
+          </div>
+          <div class="text-block">
+            <p>
+              A integração é feita ponta-a-ponta com a <strong>Plataforma IoT Hub</strong> da Eletromidia. Assim que instalada e pareada com o Wi-Fi do mobiliário, a Smart Ruler passa a enviar informações de vitalidade (<em>heartbeat</em>) para o servidor. O gerenciamento diário — bem como a leitura dos estados atuais e a tomada de decisão para reset remoto — são centralizados no painel do operador da Eletromidia, sem a necessidade de aplicativos de terceiros.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="section-title-row">
+            <span class="material-symbols-outlined section-icon">menu_book</span>
+            <h2 class="section-title">Objetivo deste Manual</h2>
+          </div>
+          <div class="text-block">
+            <p>
+              Este guia foi criado especificamente para a <strong>instalação nos equipamentos de campo</strong> da Eletromidia. O objetivo é fornecer aos nossos técnicos e equipes de manutenção todas as informações necessárias para uma integração rápida, segura e padronizada.
+            </p>
+            <p>Aqui você encontrará:</p>
+            <ul class="spec-list">
+              <li><span class="material-symbols-outlined spec-icon">push_pin</span><strong>Instruções de Fixação:</strong> Onde e como posicionar a Smart Ruler.</li>
+              <li><span class="material-symbols-outlined spec-icon">cable</span><strong>Conexões Padrão:</strong> O roteiro exato para plugar o Modem, o PC NUC e gerenciar os cabos.</li>
+              <li><span class="material-symbols-outlined spec-icon">build</span><strong>Cases e Resolução de Problemas:</strong> Procedimentos sobre como testar o equipamento no ato da instalação e agir em caso de não conformidades.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Footer */}
+      <div class="nav-footer">
+        <a href="/" class="nav-link-btn prev">
+          <span class="material-symbols-outlined">arrow_back</span>
+          <span class="btn-text">INÍCIO</span>
+        </a>
+        <a href="/instalacao" class="nav-link-btn next">
+          <span class="btn-text">MANUAL DE INSTALAÇÃO E USO</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: 16px;
+    padding-bottom: 48px;
+  }
+
+  .content-wrapper {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    position: relative;
+    padding-top: 24px;
+  }
+
+  .corner-bracket {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-top: 2px solid var(--primary);
+    opacity: 0.8;
+  }
+
+  .corner-bracket.tl { top: -16px; left: -16px; border-left: 2px solid var(--primary); }
+  .corner-bracket.tr { top: -16px; right: -16px; border-right: 2px solid var(--primary); }
+
+  .module-id {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+  }
+
+  .page-intro {
+    color: var(--on-surface-variant);
+    border-left: 2px solid var(--primary);
+    padding-left: 16px;
+    font-style: italic;
+    margin: 0;
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .text-block p {
+    color: var(--on-surface-variant);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .text-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .text-block strong {
+    color: var(--on-surface);
+  }
+
+  .content-section {
+    background-color: var(--surface-container);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+  }
+
+  .section-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-icon {
+    color: var(--primary);
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    color: var(--primary);
+  }
+
+  .custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .custom-list li {
+    display: flex;
+    gap: 16px;
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+  }
+
+  .list-bullet {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 2px;
+  }
+
+  .spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .spec-list li {
+    display: flex;
+    gap: 12px;
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+  }
+
+  .spec-icon {
+    color: var(--primary);
+    font-size: 20px;
+    opacity: 0.8;
+  }
+
+  .sub-list {
+    list-style-type: square;
+    padding-left: 24px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sub-list li {
+    color: var(--on-surface-variant);
+  }
+
+  .nav-footer {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 48px;
+  }
+
+  @media (min-width: 640px) {
+    .nav-footer {
+      flex-direction: row;
+    }
+  }
+
+  .nav-link-btn {
+    flex: 1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .nav-link-btn.prev {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--on-surface);
+  }
+
+  .nav-link-btn.prev:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-link-btn.next {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: black;
+  }
+
+  .nav-link-btn.next:hover {
+    filter: brightness(1.1);
+  }
+
+  .nav-link-btn:active {
+    transform: scale(0.95);
+  }
+</style>
