@@ -1,0 +1,708 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SmartRulerScene from '../components/SmartRulerScene.tsx';
+---
+
+<Layout title="SmartRuler OS | Comando Total">
+	<div class="home-container">
+		{/* Hero Section */}
+		<section class="hero-section">
+			<div class="hero-glow"></div>
+			
+			<div class="hero-content">
+				<div class="hero-text-block">
+					<div class="hero-label">
+						<span class="label-line"></span>
+						SISTEMA OPERACIONAL V.2025
+					</div>
+					<h1 class="hero-title">
+							SMART RULER:<br/>
+						<span class="highlight">COMANDO TOTAL</span>
+					</h1>
+					<p class="hero-description">
+            Manual de treinamento e operação Eletromidia 2025. Assuma o controle total da infraestrutura energética com precisão milimétrica e automação de última geração.
+          </p>
+					
+					<div class="hero-actions">
+						<a href="/instalacao" class="btn btn-primary">
+								INICIAR TREINAMENTO <span class="material-symbols-outlined">play_arrow</span>
+						</a>
+						<a href="/especificacoes" class="btn btn-outline">
+								ESPECIFICAÇÕES <span class="material-symbols-outlined">description</span>
+						</a>
+					</div>
+
+					<div class="hero-stats">
+						<div class="stat-item">
+							<div class="stat-label">STATUS</div>
+							<div class="stat-value">SYNCED</div>
+						</div>
+						<div class="stat-item">
+							<div class="stat-label">VOLTAGE</div>
+							<div class="stat-value">220V</div>
+						</div>
+						<div class="stat-item">
+							<div class="stat-label">LOAD</div>
+							<div class="stat-value">OPTIMAL</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="hero-visual">
+          <div class="hud-bracket-tl"></div>
+          <div class="hud-bracket-br"></div>
+          <div class="visual-serial">MODEL_SR_2025_REV_C</div>
+          <div class="visual-canvas">
+            <SmartRulerScene client:only="react" />
+          </div>
+          <div class="visual-status">
+            <span class="status-dot"></span> SENSOR ACTIVE
+          </div>
+        </div>
+			</div>
+		</section>
+
+    {/* Feature Bento Grid */}
+    <section class="features-section">
+      <div class="section-header">
+        <div class="title-block">
+          <h2 class="section-title">Módulos de Sistema</h2>
+          <p class="section-subtitle">Core Operational Parameters</p>
+        </div>
+        <div class="header-line"></div>
+        <button class="view-all-btn">
+            VIEW ALL ARCHIVES <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card large">
+          <div class="card-id">MOD_001</div>
+          <div class="card-content">
+            <div class="card-top">
+              <div class="card-icon-box">
+                <span class="material-symbols-outlined icon-main">bolt</span>
+              </div>
+              <h3 class="card-title">Gestão de Energia Inteligente</h3>
+              <p class="card-description">Controle cada tomada individualmente com dashboards de consumo em tempo real e automação baseada em horários e picos de demanda.</p>
+            </div>
+            <div class="card-bottom">
+              <div class="data-box">
+                <span class="data-label">EFICIÊNCIA</span>
+                <span class="data-value">+24.5%</span>
+              </div>
+              <div class="data-box">
+                <span class="data-label">LATÊNCIA</span>
+                <span class="data-value">12MS</span>
+              </div>
+            </div>
+          </div>
+          <div class="scanning-line"></div>
+        </div>
+
+        <div class="bento-card small">
+          <div class="card-id">MOD_002</div>
+          <div class="card-content">
+            <span class="material-symbols-outlined icon-main">shield</span>
+            <h3 class="card-title">Segurança de Rede</h3>
+            <p class="card-description">Protocolos de criptografia avançada e firewall integrado para proteção total dos seus ativos digitais.</p>
+            <div class="card-progress">
+              <div class="progress-bar-container">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+              <div class="progress-labels">
+                <span>ENCRYPTION LVL</span>
+                <span class="progress-percent">75%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Footer */}
+    <footer class="home-footer">
+      <div class="footer-container">
+        <div class="footer-branding">
+          <span class="footer-logo">SMART RULER ELETROMIDIA</span>
+          <span class="footer-divider"></span>
+          <span class="footer-copyright">© 2025 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE</span>
+        </div>
+        <div class="footer-links">
+          <a class="footer-link" href="#">PRIVACY_POLICY</a>
+          <a class="footer-link" href="#">TERMINAL_DOCS</a>
+        </div>
+      </div>
+    </footer>
+	</div>
+</Layout>
+
+<style>
+  .home-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      padding: 20px 24px;
+    }
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: rgba(237, 113, 46, 0.05);
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -10;
+  }
+
+  .hero-content {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-cols: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .hero-text-block {
+      grid-column: span 7;
+    }
+    .hero-visual {
+      grid-column: span 5;
+    }
+  }
+
+  .hero-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+  }
+
+  .hero-label {
+    font-family: var(--font-label-caps);
+    font-size: 12px;
+    color: var(--primary);
+    letter-spacing: 0.2em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .label-line {
+    width: 32px;
+    height: 1px;
+    background-color: var(--primary);
+  }
+
+  .hero-title {
+    font-family: var(--font-display-lg);
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: var(--on-surface);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 5.5rem;
+    }
+  }
+
+  .highlight {
+    color: var(--primary);
+  }
+
+  .hero-description {
+    font-family: var(--font-body-lg);
+    color: var(--on-surface-variant);
+    max-width: 36rem;
+    margin: 0;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .hero-actions {
+      flex-direction: row;
+    }
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 16px 48px;
+    font-family: var(--font-label-caps);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--on-surface-variant);
+    color: var(--on-surface);
+  }
+
+  .btn-outline:hover {
+    background-color: rgba(55, 57, 63, 0.2);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 48px;
+    max-width: 32rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .stat-item {
+    padding: 16px;
+    background-color: rgba(30, 32, 37, 0.3);
+    border-left: 2px solid var(--primary);
+  }
+
+  @media (min-width: 640px) {
+    .stat-item {
+      background: transparent;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  .stat-label {
+    color: var(--primary);
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-family: var(--font-headline-md);
+    font-size: 24px;
+    color: var(--on-surface);
+    line-height: 1;
+  }
+
+  .hero-visual {
+    position: relative;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-visual {
+      height: 600px;
+    }
+  }
+
+  .visual-serial {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--primary);
+    opacity: 0.6;
+  }
+
+  .visual-canvas {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .visual-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50% !important;
+    background-color: var(--primary);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+  }
+
+  /* Features Section */
+  .features-section {
+    padding: 48px 24px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .section-header {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+
+  .section-title {
+    font-family: var(--font-headline-lg);
+    font-size: 32px;
+    color: var(--on-surface);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .section-subtitle {
+    color: var(--on-surface-variant);
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 4px 0 0 0;
+  }
+
+  .header-line {
+    display: none;
+    height: 1px;
+    flex-grow: 1;
+    margin: 0 48px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .header-line {
+      display: block;
+    }
+  }
+
+  .view-all-btn {
+    color: var(--primary);
+    font-family: var(--font-label-caps);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+  .view-all-btn:hover {
+    text-decoration: underline;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .bento-card.large {
+      grid-column: span 4;
+    }
+    .bento-card.small {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .bento-card.large {
+      grid-column: span 8;
+    }
+    .bento-card.small {
+      grid-column: span 4;
+    }
+  }
+
+  .bento-card {
+    background-color: var(--surface-container);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    opacity: 0.3;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card-icon-box {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(237, 113, 46, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-main {
+    color: var(--primary);
+    font-size: 32px;
+  }
+
+  .card-title {
+    font-family: var(--font-headline-md);
+    font-size: 24px;
+    color: var(--on-surface);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .card-description {
+    color: var(--on-surface-variant);
+    max-width: 28rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .card-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .card-bottom {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .data-box {
+    background-color: rgba(55, 57, 63, 0.3);
+    padding: 16px;
+    border-left: 2px solid var(--primary);
+  }
+
+  .data-label {
+    display: block;
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .data-value {
+    display: block;
+    font-family: var(--font-headline-md);
+    font-size: 24px;
+    color: var(--on-surface);
+  }
+
+  .card-progress {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+
+  .progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--surface-container-highest);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: var(--primary);
+  }
+
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+  }
+
+  .progress-percent {
+    color: var(--primary);
+  }
+
+  /* Footer */
+  .home-footer {
+    padding: 48px 0;
+    background-color: var(--surface-container-low);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+    }
+  }
+
+  .footer-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-branding {
+      flex-direction: row;
+    }
+  }
+
+  .footer-logo {
+    font-family: var(--font-display-lg);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: -0.05em;
+  }
+
+  .footer-divider {
+    display: none;
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .footer-divider {
+      display: block;
+    }
+  }
+
+  .footer-copyright {
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-link {
+    font-family: var(--font-label-caps);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover {
+    color: var(--primary);
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+---
+<header class="header">
+  <div class="header-container">
+    <div class="header-logo">
+      <a href="/" class="logo-link">
+        <span class="material-symbols-outlined logo-icon">analytics</span>
+        <span class="logo-text">SMART RULER ELETROMIDIA</span>
+      </a>
+    </div>
+    
+    <nav class="header-nav">
+      <a class="nav-link" href="/">DASHBOARD</a>
+      <a class="nav-link" href="/instalacao">INSTALLATION</a>
+      <a class="nav-link" href="/especificacoes">TECH_SPECS</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="theme-toggle" class="action-btn" aria-label="Toggle Theme">
+        <span class="material-symbols-outlined theme-icon-dark">dark_mode</span>
+        <span class="material-symbols-outlined theme-icon-light">light_mode</span>
+      </button>
+      <button class="action-btn">
+        <span class="material-symbols-outlined">terminal</span>
+      </button>
+      <button class="action-btn">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+    </div>
+
+<script>
+  const handleToggleClick = () => {
+    const element = document.documentElement;
+    element.classList.toggle("light");
+    
+    const isLight = element.classList.contains("light");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  };
+
+  document.getElementById("theme-toggle")?.addEventListener("click", handleToggleClick);
+</script>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      height: 80px;
+      padding: 0 24px;
+    }
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .header-logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: -0.05em;
+  }
+
+  .logo-link {
+    text-decoration: none;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .logo-icon {
+    font-size: 32px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  @media (min-width: 400px) {
+    .logo-text {
+      display: inline;
+      text-transform: uppercase;
+    }
+  }
+
+  .header-nav {
+    display: none;
+    gap: 24px;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .header-nav {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    color: var(--on-surface-variant);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (min-width: 768px) {
+    .header-actions {
+      gap: 16px;
+    }
+  }
+
+  .action-btn {
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .action-btn:hover {
+    background-color: rgba(51, 53, 58, 0.3);
+  }
+
+  .action-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Theme Toggle Icons */
+  .theme-icon-light {
+    display: none;
+  }
+
+  :global(.light) .theme-icon-dark {
+    display: none;
+  }
+
+  :global(.light) .theme-icon-light {
+    display: inline-block;
+  }
+</style>

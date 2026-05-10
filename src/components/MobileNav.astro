@@ -1,0 +1,81 @@
+---
+const currentPath = Astro.url.pathname;
+---
+<nav class="mobile-nav">
+  <a href="/" class={`nav-btn ${currentPath === '/' ? 'active' : ''}`}>
+    <span class="material-symbols-outlined icon">grid_view</span>
+    <span class="label">Dashboard</span>
+  </a>
+  
+  <a href="/instalacao" class={`nav-btn ${currentPath === '/instalacao' ? 'active' : ''}`}>
+    <span class="material-symbols-outlined icon">menu_book</span>
+    <span class="label">Instalação</span>
+  </a>
+
+  <a href="/especificacoes" class={`nav-btn ${currentPath === '/especificacoes' ? 'active' : ''}`}>
+    <span class="material-symbols-outlined icon">analytics</span>
+    <span class="label">Técnico</span>
+  </a>
+
+  <button class="nav-btn" id="mobile-menu-trigger">
+    <span class="material-symbols-outlined icon">settings</span>
+    <span class="label">Sistema</span>
+  </button>
+</nav>
+
+<style>
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-color);
+    z-index: 50;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  .nav-btn {
+    display: flex;
+    flex-direction: column;
+    items-center: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--on-surface-variant);
+    transition: color 0.2s;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    min-width: 64px;
+    height: 100%;
+    align-items: center;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    color: var(--primary);
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .label {
+    font-family: var(--font-label-caps);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

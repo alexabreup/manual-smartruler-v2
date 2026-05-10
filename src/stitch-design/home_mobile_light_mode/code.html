@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SMART RULER ELETROMIDIA - Mobile Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb694",
+                        "surface-container-high": "#ebd6cd",
+                        "on-secondary-fixed": "#1a1c21",
+                        "surface-dim": "#ebd6cd",
+                        "on-surface-variant": "#574238",
+                        "outline-variant": "#dfc0b3",
+                        "inverse-primary": "#ffb694",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-bright": "#fff8f6",
+                        "surface-variant": "#f4ded4",
+                        "primary": "#ED712E",
+                        "on-tertiary-container": "#2c2e2e",
+                        "secondary": "#5e5e65",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#33302e",
+                        "surface": "#fff8f6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary-container": "#ffffff",
+                        "secondary-fixed-dim": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface-container": "#f9ebe5",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#45474c",
+                        "secondary-fixed": "#e2e2e9",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "tertiary-container": "#949595",
+                        "on-surface": "#231a15",
+                        "on-background": "#231a15",
+                        "surface-container-highest": "#e2d1ca",
+                        "on-secondary-container": "#1a1c21",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5e5f5f",
+                        "on-primary-fixed": "#351000",
+                        "secondary-container": "#e2e2e9",
+                        "primary-container": "#ED712E",
+                        "inverse-on-surface": "#f9ebe5",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#410002",
+                        "surface-container-low": "#fff1ec",
+                        "outline": "#897166",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "20px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .clipped-corner { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%); }
+        .clipped-corner-inv { clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px); }
+        .hud-bracket-tl { border-top: 2px solid #ED712E; border-left: 2px solid #ED712E; width: 12px; height: 12px; position: absolute; top: 0; left: 0; }
+        .hud-bracket-br { border-bottom: 2px solid #ED712E; border-right: 2px solid #ED712E; width: 12px; height: 12px; position: absolute; bottom: 0; right: 0; }
+        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(237, 113, 46, 0.03) 50%); background-size: 100% 4px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-outline-variant/30 px-lg py-md flex justify-between items-center h-16">
+<div class="font-display-lg text-headline-md font-bold text-primary tracking-tighter uppercase">
+            SMART RULER ELETROMIDIA
+        </div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative px-lg py-xl flex flex-col gap-lg bg-surface-bright">
+<div class="absolute inset-0 scanline opacity-40 pointer-events-none"></div>
+<!-- Hero Graphics Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container border border-outline-variant/50 p-xs">
+<div class="hud-bracket-tl"></div>
+<div class="hud-bracket-br"></div>
+<div class="absolute top-sm right-sm font-label-caps text-primary opacity-60">SR-UNIT_01</div>
+<img class="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700" data-alt="A high-tech industrial smart ruler featuring glowing orange digital displays and precision laser optics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPqv24VryogY4DCXKr-OC-O7Gmikau3xLU4pBawlV34KotttraCXXKOKgydylVC8VQFuI5i1D7ySGDi2pYHpZbNzfCZ0qfFuEZqJmvRb576JS8yDi9ei6UmewaxyQuHJYvAF1Mg42xnT1KsrF_YTdJbHQkgkg8fpd6CWJ0_8yLxr5ogQ1VWPb3PfA7BRD6N4ehkfMkv7yFP0BViL7Smlj9GmsWMYnWj7Awc-NELedjwisDRKHircgr68iJNRKRh3CLGTqkkb37V2k"/>
+<div class="absolute bottom-0 left-0 w-full p-md bg-gradient-to-t from-white/80 to-transparent">
+<div class="flex items-end justify-between">
+<div class="font-label-caps text-on-surface-variant">CALIBRATION STATUS</div>
+<div class="font-label-caps text-primary font-bold">OPTIMAL</div>
+</div>
+<div class="w-full bg-black/5 h-1 mt-xs overflow-hidden">
+<div class="bg-primary h-full w-3/4"></div>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex flex-col gap-md">
+<div class="inline-block border-l-4 border-primary px-sm">
+<span class="font-label-caps text-primary tracking-[0.2em] font-bold">VERSION 2.04</span>
+</div>
+<h1 class="font-display-lg text-headline-lg font-bold uppercase leading-none tracking-tight text-on-surface">
+                    NEXT-GEN PRECISION <br/> MEASUREMENT OS
+                </h1>
+<p class="font-body-md text-on-surface-variant max-w-[90%]">
+                    Deploying military-grade spatial awareness tools for technical operators. Calibrated for maximum efficiency in hard-surface environments.
+                </p>
+<!-- CTA Stack -->
+<div class="flex flex-col gap-sm mt-md">
+<button class="bg-primary-container py-lg font-label-caps flex items-center justify-center gap-md active:scale-95 transition-transform clipped-corner text-on-primary">
+                        INITIATE SYSTEM
+                        <span class="material-symbols-outlined" data-icon="rocket_launch" data-weight="fill">rocket_launch</span>
+</button>
+<button class="border border-outline text-on-surface py-lg font-label-caps flex items-center justify-center gap-md active:scale-95 transition-transform bg-surface">
+                        READ MANUAL
+                        <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid (Mobile) -->
+<section class="px-lg py-lg grid grid-cols-2 gap-sm bg-surface-container-low">
+<div class="bg-surface border border-outline-variant/30 p-md flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<div>
+<div class="text-display-lg font-bold text-on-surface leading-none">99.9</div>
+<div class="font-label-caps text-on-surface-variant mt-xs">ACCURACY %</div>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant/30 p-md flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary" data-icon="speed">speed</span>
+<div>
+<div class="text-display-lg font-bold text-on-surface leading-none">0.02</div>
+<div class="font-label-caps text-on-surface-variant mt-xs">LATENCY MS</div>
+</div>
+</div>
+<div class="col-span-2 bg-surface border border-outline-variant/30 p-md flex items-center justify-between">
+<div class="flex flex-col">
+<div class="font-label-caps text-primary font-bold">NETWORK STATUS</div>
+<div class="font-body-md text-on-surface font-bold uppercase">SECURE LINK ESTABLISHED</div>
+</div>
+<div class="flex gap-xs">
+<div class="w-1.5 h-6 bg-primary"></div>
+<div class="w-1.5 h-6 bg-primary/40"></div>
+<div class="w-1.5 h-6 bg-primary/20"></div>
+</div>
+</div>
+</section>
+<!-- Feature List -->
+<section class="px-lg py-lg bg-surface-bright flex flex-col gap-gutter">
+<div class="flex items-center gap-md">
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<h2 class="font-label-caps text-on-surface-variant shrink-0 font-bold">CORE MODULES</h2>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<div class="space-y-sm">
+<div class="group flex gap-md items-start p-md bg-surface border border-outline-variant/30 border-l-4 border-l-transparent hover:border-l-primary hover:bg-surface-container-low transition-all">
+<div class="w-12 h-12 shrink-0 flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="grid_view">grid_view</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-body-lg font-bold uppercase text-on-surface">Real-time Grid Overlay</h3>
+<p class="text-on-surface-variant text-sm">Adaptive coordinate mapping for any physical surface type.</p>
+</div>
+</div>
+<div class="group flex gap-md items-start p-md bg-surface border border-outline-variant/30 border-l-4 border-l-transparent hover:border-l-primary hover:bg-surface-container-low transition-all">
+<div class="w-12 h-12 shrink-0 flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-md text-body-lg font-bold uppercase text-on-surface">Component Library</h3>
+<p class="text-on-surface-variant text-sm">Instant access to standard technical schematics and parts.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Optimized) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container border-t border-outline-variant/30 flex justify-around items-center h-20 px-sm">
+<a class="flex flex-col items-center gap-xs text-primary font-bold" href="#">
+<span class="material-symbols-outlined text-headline-md" data-icon="home" data-weight="fill">home</span>
+<span class="font-label-caps text-[10px]">HOME</span>
+<div class="w-1 h-1 bg-primary mt-xs"></div>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-headline-md" data-icon="grid_view">grid_view</span>
+<span class="font-label-caps text-[10px]">DASHBOARD</span>
+</a>
+<div class="relative -top-6">
+<button class="w-16 h-16 bg-primary shadow-lg flex items-center justify-center border-4 border-surface rotate-45 active:scale-90 transition-transform text-on-primary">
+<span class="material-symbols-outlined -rotate-45 text-2xl" data-icon="add" data-weight="fill">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-headline-md" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-label-caps text-[10px]">SETUP</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-headline-md" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-[10px]">DATA</span>
+</a>
+</nav>
+<!-- UI Overlays / Accents -->
+<div class="fixed top-20 right-4 pointer-events-none flex flex-col gap-xs opacity-60">
+<div class="w-1 h-8 bg-primary"></div>
+<div class="w-1 h-2 bg-primary"></div>
+<div class="w-1 h-2 bg-primary"></div>
+</div>
+<div class="fixed bottom-24 left-4 pointer-events-none flex flex-col gap-xs opacity-60">
+<div class="font-code-sm text-[10px] text-on-surface-variant font-bold">SYS_LOG: 204.09</div>
+<div class="font-code-sm text-[10px] text-primary font-bold">PWR_LVL: 88%</div>
+</div>
+</body></html>

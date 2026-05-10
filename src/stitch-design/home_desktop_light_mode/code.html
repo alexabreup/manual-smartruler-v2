@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ED712E",
+                        "primary": "#ED712E",
+                        "on-tertiary-container": "#2c2e2e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#ebd6cd",
+                        "surface-bright": "#fff8f6",
+                        "primary-fixed": "#ED712E",
+                        "on-tertiary": "#2f3131",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#e2e2e2",
+                        "on-error-container": "#410002",
+                        "surface-variant": "#f4ded3",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#f4ded3",
+                        "secondary-fixed": "#ffdbcc",
+                        "inverse-surface": "#313033",
+                        "inverse-on-surface": "#f4eff4",
+                        "on-surface-variant": "#53433c",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed-dim": "#ffb694",
+                        "surface": "#fff8f6",
+                        "surface-container-low": "#fff1ec",
+                        "surface-container-high": "#f9ebe6",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "on-secondary-container": "#1a1c1c",
+                        "on-secondary-fixed": "#351000",
+                        "on-primary": "#ffffff",
+                        "outline": "#ED712E",
+                        "background": "#fff8f6",
+                        "surface-container": "#f4e5df",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary-fixed": "#351000",
+                        "tertiary": "#5d5e5e",
+                        "secondary": "#77574b",
+                        "surface-container-highest": "#eee0da",
+                        "on-background": "#231a15",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed-dim": "#ffb694",
+                        "on-secondary-fixed-variant": "#5d3f34",
+                        "inverse-primary": "#ffb694",
+                        "primary-container": "#ED712E",
+                        "on-surface": "#231a15",
+                        "on-primary-container": "#ffffff",
+                        "outline-variant": "#d8c2b9",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "gutter": "20px",
+                        "xl": "48px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6;
+            background-image: 
+                linear-gradient(rgba(237, 113, 46, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(237, 113, 46, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .chamfer-hover:hover {
+            clip-path: polygon(0 0, 90% 0, 100% 15%, 100% 100%, 0 100%);
+        }
+        .hud-bracket-tl { border-top: 2px solid #ED712E; border-left: 2px solid #ED712E; width: 20px; height: 20px; position: absolute; top: -2px; left: -2px; }
+        .hud-bracket-br { border-bottom: 2px solid #ED712E; border-right: 2px solid #ED712E; width: 20px; height: 20px; position: absolute; bottom: -2px; right: -2px; }
+        .scanning-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ED712E, transparent);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Shell -->
+<header class="bg-surface border-b border-black/5 docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary tracking-tighter">
+            SMART RULER ELETROMIDIA
+        </div>
+<nav class="hidden md:flex gap-lg">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-headline-md text-headline-md uppercase tracking-wider transition-colors" href="#">HOME</a>
+<a class="text-on-surface-variant font-body-md font-headline-md text-headline-md uppercase tracking-wider hover:text-primary hover:bg-surface-variant/30 transition-colors" href="#">INTRO</a>
+<a class="text-on-surface-variant font-body-md font-headline-md text-headline-md uppercase tracking-wider hover:text-primary hover:bg-surface-variant/30 transition-colors" href="#">INSTALL</a>
+<a class="text-on-surface-variant font-body-md font-headline-md text-headline-md uppercase tracking-wider hover:text-primary hover:bg-surface-variant/30 transition-colors" href="#">TECH SPEC</a>
+</nav>
+<div class="flex gap-md">
+<button class="text-primary hover:bg-surface-variant/30 p-xs transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="text-primary hover:bg-surface-variant/30 p-xs transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-surface-container border-r border-black/5 w-64 pt-24 hidden md:flex">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-md mb-sm">
+<div class="w-10 h-10 bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-primary">OPERATOR_01</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">V2.04 ACTIVE</div>
+</div>
+</div>
+<button class="w-full py-xs border border-primary text-primary font-label-caps text-[10px] hover:bg-primary/10 transition-all">RUN DIAGNOSTIC</button>
+</div>
+<nav class="flex-grow">
+<a class="bg-primary/10 text-primary border-r-4 border-primary px-lg py-md flex items-center gap-md font-label-caps text-label-caps transition-all duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span> DASHBOARD
+        </a>
+<a class="text-on-surface-variant px-lg py-md flex items-center gap-md font-label-caps text-label-caps hover:bg-surface-bright/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">menu_book</span> MANUAL
+        </a>
+<a class="text-on-surface-variant px-lg py-md flex items-center gap-md font-label-caps text-label-caps hover:bg-surface-bright/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings_input_component</span> SETUP
+        </a>
+<a class="text-on-surface-variant px-lg py-md flex items-center gap-md font-label-caps text-label-caps hover:bg-surface-bright/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span> DATA
+        </a>
+</nav>
+<div class="mt-auto p-lg">
+<a class="text-on-surface-variant flex items-center gap-md font-label-caps text-label-caps hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined">power_settings_new</span> LOGOUT
+        </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:pl-64 pt-20 min-h-screen">
+<!-- Hero Section -->
+<section class="relative px-lg py-xl md:py-32 flex flex-col items-center justify-center overflow-hidden border-b border-black/5">
+<!-- Background Elements -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="max-w-container-max w-full grid grid-cols-1 lg:grid-cols-12 gap-xl items-center">
+<div class="lg:col-span-7 space-y-lg relative">
+<div class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-sm flex items-center gap-sm">
+<span class="w-8 h-[1px] bg-primary"></span>
+                    SISTEMA OPERACIONAL V.2025
+                </div>
+<h1 class="font-display-lg text-[4rem] md:text-[5.5rem] leading-[1] text-on-surface font-bold uppercase">
+                    SMART RULER:<br/>
+<span class="text-primary">COMANDO TOTAL</span>
+</h1>
+<p class="font-body-lg text-on-surface-variant max-w-xl">
+                    Manual de treinamento e operação Eletromidia 2025. Assuma o controle total da infraestrutura energética com precisão milimétrica e automação de última geração.
+                </p>
+<div class="flex flex-wrap gap-md pt-md">
+<button class="bg-primary text-white px-xl py-md font-label-caps text-label-caps transition-all chamfer-hover active:scale-95 flex items-center gap-sm">
+                        INICIAR TREINAMENTO <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<button class="border border-outline text-on-surface px-xl py-md font-label-caps text-label-caps hover:bg-surface-bright/50 transition-all chamfer-hover active:scale-95 flex items-center gap-sm">
+                        ESPECIFICAÇÕES <span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+</div>
+<!-- Technical Meta Info -->
+<div class="grid grid-cols-3 gap-lg pt-xl border-t border-black/10 mt-xl max-w-lg">
+<div>
+<div class="text-primary font-label-caps text-[10px] mb-xs">STATUS</div>
+<div class="font-headline-md text-headline-md text-on-surface">SYNCED</div>
+</div>
+<div>
+<div class="text-primary font-label-caps text-[10px] mb-xs">VOLTAGE</div>
+<div class="font-headline-md text-headline-md text-on-surface">220V</div>
+</div>
+<div>
+<div class="text-primary font-label-caps text-[10px] mb-xs">LOAD</div>
+<div class="font-headline-md text-headline-md text-on-surface">OPTIMAL</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative group">
+<!-- HUD Frame -->
+<div class="hud-bracket-tl"></div>
+<div class="hud-bracket-br"></div>
+<div class="absolute -top-4 right-0 font-label-caps text-[10px] text-primary">MODEL_SR_2025_REV_C</div>
+<div class="aspect-square bg-surface-container-high relative overflow-hidden flex items-center justify-center border border-black/10 shadow-lg">
+<img alt="Smart Ruler Device" class="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDydbh_OlUIMBRGkFsesrpNfMB7qdsCgIfc5VgUEUcSDFqLUAf5MB3UJJD_HsCvpsuiIbg19nyuUq-csJ5cOICJvlng5oJIUqLvxLnPDZQ6S4TGFivUJUJQpKRtnR5Kb5eLlRjwKwzrwlwdYZTBjvpN-YmLWX1K8KmpWapDZTbbM24fgI5-MZy_82yvZ_U20YXrIxsNpCB0WElkMzCOzgFBk5eop7ei109Li2ul_xaWF-ZippAfiRnE3aG2icz-g5S9mj0G5Yp9v0"/>
+<!-- Overlay Accents -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 font-label-caps text-[10px] text-on-surface-variant flex items-center gap-xs bg-white/80 px-2 py-1 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> SENSOR ACTIVE
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="px-lg py-xl max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">Módulos de Sistema</h2>
+<p class="text-on-surface-variant font-label-caps text-[10px] tracking-widest mt-xs uppercase">Core Operational Parameters</p>
+</div>
+<div class="hidden md:block h-[1px] flex-grow mx-xl bg-black/5"></div>
+<button class="text-primary font-label-caps text-label-caps hover:underline flex items-center gap-xs">
+                VIEW ALL ARCHIVES <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-gutter">
+<!-- Large Module -->
+<div class="md:col-span-4 lg:col-span-8 bg-surface-container-low border border-black/5 p-lg relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-md font-label-caps text-[10px] text-on-surface-variant opacity-40">MOD_001</div>
+<div class="flex flex-col h-full justify-between gap-xl">
+<div class="space-y-md">
+<div class="w-12 h-12 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Gestão de Energia Inteligente</h3>
+<p class="text-on-surface-variant max-w-md">Controle cada tomada individualmente com dashboards de consumo em tempo real e automação baseada em horários e picos de demanda.</p>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-high p-md border-l-2 border-primary">
+<span class="block font-label-caps text-[10px] text-primary">EFICIÊNCIA</span>
+<span class="block font-headline-md text-on-surface">+24.5%</span>
+</div>
+<div class="bg-surface-container-high p-md border-l-2 border-primary">
+<span class="block font-label-caps text-[10px] text-primary">LATÊNCIA</span>
+<span class="block font-headline-md text-on-surface">12MS</span>
+</div>
+</div>
+</div>
+<div class="scanning-line"></div>
+</div>
+<!-- Small Vertical Module -->
+<div class="md:col-span-2 lg:col-span-4 bg-surface-container-low border border-black/5 p-lg flex flex-col gap-md relative">
+<div class="absolute top-0 right-0 p-md font-label-caps text-[10px] text-on-surface-variant opacity-40">MOD_002</div>
+<span class="material-symbols-outlined text-primary text-[32px]">shield</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">Segurança de Rede</h3>
+<p class="text-on-surface-variant">Protocolos de criptografia avançada e firewall integrado para proteção total dos seus ativos digitais.</p>
+<div class="mt-auto pt-md">
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-primary"></div>
+</div>
+<div class="flex justify-between mt-xs font-label-caps text-[10px]">
+<span class="text-on-surface-variant">ENCRYPTION LVL</span>
+<span class="text-primary">75%</span>
+</div>
+</div>
+</div>
+<!-- Three Small Horizontal Modules -->
+<div class="md:col-span-2 lg:col-span-4 bg-surface-container border border-black/5 p-md flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-on-surface uppercase leading-none">Conectividade</div>
+<div class="text-[12px] text-on-surface-variant mt-1">Multi-Link Support</div>
+</div>
+</div>
+<div class="md:col-span-2 lg:col-span-4 bg-surface-container border border-black/5 p-md flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">sensors</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-on-surface uppercase leading-none">Telemetria</div>
+<div class="text-[12px] text-on-surface-variant mt-1">Real-time Analysis</div>
+</div>
+</div>
+<div class="md:col-span-2 lg:col-span-4 bg-primary border border-primary p-md flex items-center gap-md group cursor-pointer hover:bg-[#ff8a4d] transition-colors shadow-sm">
+<div class="w-12 h-12 bg-white/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white">file_download</span>
+</div>
+<div>
+<div class="font-headline-md text-[18px] text-white uppercase leading-none">Firmware</div>
+<div class="text-[12px] text-white/80 mt-1">Check for Updates</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System Logs Section -->
+<section class="px-lg py-xl max-w-container-max mx-auto mb-20">
+<div class="bg-surface-container-lowest border border-black/10 p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-3 h-3 bg-primary rounded-sm animate-pulse"></span>
+<h3 class="font-label-caps text-label-caps text-on-surface uppercase">Live System Logs - Kernel 0.4.1</h3>
+</div>
+<div class="space-y-sm font-code-sm text-code-sm text-on-surface">
+<div class="flex gap-lg">
+<span class="text-primary font-bold">[12:44:01]</span>
+<span class="opacity-70">INITIALIZING SMART RULER CORE...</span>
+</div>
+<div class="flex gap-lg">
+<span class="text-primary font-bold">[12:44:03]</span>
+<span class="opacity-70">CHECKING CONNECTIVITY TO ELETROMIDIA_SERVER_01: SUCCESS</span>
+</div>
+<div class="flex gap-lg">
+<span class="text-primary font-bold">[12:44:05]</span>
+<span class="text-primary">ENABLING LOAD BALANCER - OPTIMIZATION MODE ACTIVE</span>
+</div>
+<div class="flex gap-lg">
+<span class="text-primary font-bold">[12:44:08]</span>
+<span class="opacity-70">OPERATOR_01 AUTHENTICATED. WELCOME COMMANDER.</span>
+</div>
+<div class="flex gap-lg animate-pulse">
+<span class="text-primary font-bold">[12:44:10]</span>
+<span class="opacity-70">AWAITING INPUT... _</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="md:pl-64 py-lg bg-surface-container-low border-t border-black/5">
+<div class="px-lg max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-[24px] font-bold text-primary tracking-tighter">SMART RULER ELETROMIDIA</span>
+<span class="w-[1px] h-6 bg-black/10"></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">© 2025 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY_POLICY</a>
+<a class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary transition-colors" href="#">TERMINAL_DOCS</a>
+<a class="font-label-caps text-[10px] text-on-surface-variant hover:text-primary transition-colors" href="#">SUPPORT_CHANNEL</a>
+</div>
+</div>
+</footer>
+</body></html>

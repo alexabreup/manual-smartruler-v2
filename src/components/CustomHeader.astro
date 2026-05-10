@@ -1,0 +1,34 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Search from '@astrojs/starlight/components/Search.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+import MobileMenuToggle from '@astrojs/starlight/components/MobileMenuToggle.astro';
+---
+
+<header class="bg-surface border-b border-black/10 w-full top-0 z-50 flex items-center h-16 md:h-20 px-4 md:px-6">
+  <div class="flex justify-between items-center w-full max-w-[1280px] mx-auto">
+    <div class="flex items-center gap-4">
+      <a href="/" class="font-display-lg text-headline-md font-bold text-primary tracking-tighter no-underline hover:text-primary">
+        SMART RULER ELETROMIDIA
+      </a>
+    </div>
+    
+
+    <div class="flex items-center gap-4">
+      <div class="md:hidden flex items-center">
+        <MobileMenuToggle {...Astro.props} />
+      </div>
+      <div class="hidden md:block">
+        <Search {...Astro.props} />
+      </div>
+      <div class="flex gap-2 text-primary items-center">
+        <button class="hover:bg-surface-variant/30 p-1 transition-colors active:scale-95 duration-75 text-primary cursor-pointer border-none bg-transparent flex items-center justify-center">
+          <span class="material-symbols-outlined">terminal</span>
+        </button>
+        <div class="hidden md:block">
+           <ThemeSelect {...Astro.props} />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SMART RULER OS - Installation Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-glow {
+            box-shadow: inset 0 0 15px rgba(237, 113, 46, 0.02), 0 0 1px rgba(237, 113, 46, 0.1);
+        }
+        .step-glow:hover {
+            box-shadow: inset 0 0 20px rgba(237, 113, 46, 0.05), 0 0 4px rgba(237, 113, 46, 0.2);
+        }
+        .chamfer-hover:hover {
+            clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 0 100%);
+        }
+        .technical-divider {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 4px 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb694",
+                        "surface-container-high": "#f6ebe6",
+                        "on-secondary-fixed": "#1a1c21",
+                        "surface-dim": "#ebd6cd",
+                        "on-surface-variant": "#574238",
+                        "outline-variant": "#d8c2b7",
+                        "inverse-primary": "#a14000",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-bright": "#fff8f6",
+                        "surface-variant": "#f4ded3",
+                        "primary": "#ed712e",
+                        "on-tertiary-container": "#2c2e2e",
+                        "secondary": "#5e5e66",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#332f2d",
+                        "surface": "#fff8f6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary-container": "#351000",
+                        "secondary-fixed-dim": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#7b2f00",
+                        "primary-fixed-dim": "#ffb694",
+                        "surface-container": "#fdf2ee",
+                        "primary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#45474c",
+                        "secondary-fixed": "#e2e2e9",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "tertiary-container": "#949595",
+                        "on-surface": "#221a17",
+                        "on-background": "#221a17",
+                        "surface-container-highest": "#f0e0d9",
+                        "on-secondary-container": "#1a1c21",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5e5e5f",
+                        "on-primary-fixed": "#351000",
+                        "secondary-container": "#e1e2e9",
+                        "primary-container": "#ffdbcc",
+                        "inverse-on-surface": "#fbeee9",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#410002",
+                        "surface-container-low": "#fff1ec",
+                        "outline": "#8a7369",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "20px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary/20">
+<!-- TopNavBar Implementation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant px-lg py-md">
+<div class="flex justify-between items-center w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary tracking-tighter uppercase">
+                SMART RULER OS
+            </div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors uppercase" href="#">HOME</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors uppercase" href="#">INTRO</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 uppercase" href="#">INSTALL</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors uppercase" href="#">TECH SPEC</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-xl px-md min-h-screen max-w-2xl mx-auto">
+<!-- Installation Hero -->
+<div class="mb-xl relative">
+<div class="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-primary opacity-40"></div>
+<div class="absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-primary opacity-40"></div>
+<p class="font-label-caps text-primary mb-sm tracking-widest uppercase font-bold">MODULE_ID: INSTALL_01</p>
+<h1 class="font-display-lg text-headline-lg uppercase mb-md text-on-surface">System Deployment</h1>
+<p class="text-on-surface-variant border-l-2 border-primary pl-md italic">
+                Follow the precise sequence for hardware calibration and firmware synchronization.
+            </p>
+</div>
+<!-- Step List -->
+<div class="flex flex-col gap-lg">
+<!-- Step 1 -->
+<div class="step-glow bg-surface-container-low border border-outline-variant p-lg relative group transition-all duration-300">
+<div class="flex items-start gap-lg">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary-container text-primary font-label-caps font-bold">
+                        01
+                    </div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary text-body-lg" data-icon="power">power</span>
+<h3 class="font-headline-md text-body-lg uppercase tracking-wider text-on-surface">Initialization</h3>
+</div>
+<p class="text-on-surface-variant font-body-md">Connect the Smart Ruler interface via USB-C to your workstation. Ensure the status LED flashes orange.</p>
+</div>
+</div>
+</div>
+<!-- Step 2 - Active State -->
+<div class="step-glow bg-white border-2 border-primary p-lg relative group transition-all duration-300">
+<div class="absolute -right-1.5 -top-1.5 w-5 h-5 bg-primary rotate-45 shadow-sm"></div>
+<div class="flex items-start gap-lg">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary text-on-primary font-label-caps font-bold">
+                        02
+                    </div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary text-body-lg" data-icon="sync">sync</span>
+<h3 class="font-headline-md text-body-lg uppercase tracking-wider text-primary font-bold">Firmware Sync</h3>
+</div>
+<p class="text-on-surface font-body-md mb-md">Launch the SMART RULER desktop client and select "Connect Device" from the primary dashboard.</p>
+<div class="bg-surface-container-high border border-primary/20 p-md mb-md">
+<img class="w-full grayscale brightness-95 contrast-110 mb-sm" data-alt="A high-tech digital user interface displayed on a computer screen featuring complex technical schematics and data visualizations. The aesthetic is dominated by deep charcoal grays and glowing intense orange accents that create a professional mission-control vibe. Sharp white hairline grids and technical monospace text labels are scattered throughout the dashboard, emphasizing precision and futuristic data management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0LXAr4o9nJ7OR7sUzBKhghZG2pzKmpOYAy3aLJ0_S6MaQeniJu3PAMjjuRKEvAXbIFGk8lq8WSNrER5upPVay_xd8O1WJ5sFtJPr6zh1aoRdqEXBrBh-g-WIcx2wNJocEcq-1XteN_lYMk3euRYtbtLwgXH4NXbmZDv0JkFvChXNa0CN_658VhViThYR0fWs9S_7Q591D6DJBjMzO71wW0KVLd-I6dtbqSayyZWbirxbDXc5-qb-FeuV96DjQ6LzOwyhk9WHy9u4"/>
+<p class="font-label-caps text-xs text-primary tracking-tighter uppercase font-bold">FIG. 02: SOFTWARE INTERFACE SYNC</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="step-glow bg-surface-container-low border border-outline-variant p-lg relative group transition-all duration-300 opacity-60">
+<div class="flex items-start gap-lg">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-surface-variant border border-outline-variant text-on-surface-variant font-label-caps">
+                        03
+                    </div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-body-lg" data-icon="straighten">straighten</span>
+<h3 class="font-headline-md text-body-lg uppercase tracking-wider text-on-surface">Calibration</h3>
+</div>
+<p class="text-on-surface-variant font-body-md">Place the ruler on a flat, non-reflective surface. Press the 'CAL' button for 3 seconds until synchronized.</p>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="step-glow bg-surface-container-low border border-outline-variant p-lg relative group transition-all duration-300 opacity-60">
+<div class="flex items-start gap-lg">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-surface-variant border border-outline-variant text-on-surface-variant font-label-caps">
+                        04
+                    </div>
+<div class="flex-grow">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-body-lg" data-icon="cloud_upload">cloud_upload</span>
+<h3 class="font-headline-md text-body-lg uppercase tracking-wider text-on-surface">Data Handshake</h3>
+</div>
+<p class="text-on-surface-variant font-body-md">Initiate first-time telemetry upload to verify sensor integrity across all axes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Tracking -->
+<div class="mt-xl pt-lg border-t border-outline-variant flex flex-col gap-sm">
+<div class="flex justify-between items-center font-label-caps text-xs text-primary font-bold">
+<span>DEPLOYMENT STATUS</span>
+<span>50% COMPLETE</span>
+</div>
+<div class="flex gap-1 h-3">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+<div class="flex-1 bg-surface-variant"></div>
+</div>
+</div>
+</main>
+<!-- Navigation Footer (Sticky Mobile) -->
+<footer class="fixed bottom-0 left-0 w-full bg-white border-t border-primary/20 z-50">
+<div class="flex justify-between max-w-2xl mx-auto px-md py-md gap-md">
+<button class="flex-1 chamfer-hover bg-transparent border border-outline text-primary py-md flex items-center justify-center gap-sm transition-all hover:bg-primary/5 active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-caps font-bold">PREVIOUS</span>
+</button>
+<button class="flex-1 chamfer-hover bg-primary border border-primary text-on-primary py-md flex items-center justify-center gap-sm transition-all hover:brightness-105 active:scale-95 shadow-lg shadow-primary/10">
+<span class="font-label-caps font-bold">NEXT STEP</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Side Decoration Lines -->
+<div class="fixed top-0 left-0 h-full w-gutter technical-divider opacity-40 hidden lg:block"></div>
+<div class="fixed top-0 right-0 h-full w-gutter technical-divider opacity-40 hidden lg:block"></div>
+</body></html>

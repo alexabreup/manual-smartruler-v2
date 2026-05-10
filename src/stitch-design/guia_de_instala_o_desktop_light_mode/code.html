@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Ruler OS - Installation Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .clipped-corner {
+            clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%);
+        }
+        .header-clipped {
+            clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%, 0% 100%);
+        }
+        .step-active {
+            box-shadow: inset 0 0 15px rgba(237, 113, 46, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#ED712E",
+                      "primary": "#ED712E",
+                      "on-tertiary-container": "#2c2e2e",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#ebd6cd",
+                      "surface-bright": "#fff8f6",
+                      "primary-fixed": "#ffdbcc",
+                      "on-tertiary": "#2f3131",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#949595",
+                      "on-error-container": "#410002",
+                      "surface-variant": "#f4ded3",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#f4ded3",
+                      "secondary-fixed": "#ffdbcc",
+                      "inverse-surface": "#362f2c",
+                      "inverse-on-surface": "#fbeee9",
+                      "on-surface-variant": "#53433c",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "secondary-fixed-dim": "#e7bdb0",
+                      "surface": "#fff8f6",
+                      "surface-container-low": "#fff1ec",
+                      "surface-container-high": "#f5e6df",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "on-primary-fixed-variant": "#7b2f00",
+                      "on-secondary-container": "#351000",
+                      "on-secondary-fixed": "#351000",
+                      "on-primary": "#ffffff",
+                      "outline": "#85736b",
+                      "background": "#fff8f6",
+                      "surface-container": "#fbeee9",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-primary-fixed": "#351000",
+                      "tertiary": "#5d5e5e",
+                      "secondary": "#77574b",
+                      "surface-container-highest": "#f0dfd8",
+                      "on-background": "#231a17",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "primary-fixed-dim": "#ED712E",
+                      "on-secondary-fixed-variant": "#5c4035",
+                      "inverse-primary": "#ffb694",
+                      "primary-container": "#ED712E",
+                      "on-surface": "#231a17",
+                      "on-primary-container": "#ffffff",
+                      "outline-variant": "#d8c2b8",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "gutter": "20px",
+                      "xl": "48px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "unit": "4px",
+                      "md": "16px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-md": ["Space Grotesk"],
+                      "label-caps": ["JetBrains Mono"],
+                      "headline-lg": ["Space Grotesk"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary tracking-tighter uppercase">
+                SMART RULER OS
+            </div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">HOME</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">INTRO</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">INSTALL</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">TECH SPEC</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">terminal</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar Shell (Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full flex-col z-40 bg-surface-container border-r border-outline-variant w-64 pt-24">
+<div class="px-lg mb-lg">
+<div class="text-primary font-display-lg text-headline-md uppercase font-bold tracking-tighter">OPERATOR_01</div>
+<div class="text-on-surface-variant font-label-caps text-label-caps opacity-70">V2.04 ACTIVE</div>
+</div>
+<nav class="flex-1">
+<div class="flex flex-col">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-md hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="bg-primary/10 text-primary border-r-4 border-primary px-4 py-3 flex items-center gap-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-caps text-label-caps">MANUAL</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-md hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-label-caps text-label-caps">SETUP</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-md hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">DATA</span>
+</a>
+</div>
+</nav>
+<div class="p-lg">
+<button class="w-full bg-primary text-on-primary py-md font-label-caps text-label-caps hover:brightness-110 transition-all active:scale-95 duration-75">
+                RUN DIAGNOSTIC
+            </button>
+</div>
+<div class="border-t border-outline-variant py-md">
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-md hover:bg-surface-variant transition-all duration-200" href="#">
+<span class="material-symbols-outlined">power_settings_new</span>
+<span class="font-label-caps text-label-caps">LOGOUT</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-24 pb-12 px-gutter min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Progress Tracker Section -->
+<section class="mb-xl bg-surface-container-low p-lg border border-outline-variant relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background uppercase tracking-tight">Installation Guide</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-xs">SYSTEM_INITIALIZATION_PROTOCOL_7.0</p>
+</div>
+<div class="text-right">
+<span class="font-code-sm text-code-sm text-primary">STATUS: 25% COMPLETE</span>
+</div>
+</div>
+<!-- Gamer Style Progress Bar -->
+<div class="flex gap-1 h-4 w-full">
+<div class="bg-primary flex-1 relative">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+<div class="bg-surface-container-highest flex-1"></div>
+<div class="bg-surface-container-highest flex-1"></div>
+<div class="bg-surface-container-highest flex-1"></div>
+</div>
+</section>
+<!-- Step-by-Step Visual Guide -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Step 1: Active -->
+<div class="group relative">
+<div class="absolute -top-3 -left-3 bg-primary text-on-primary font-code-sm px-2 py-1 z-10 font-bold">01</div>
+<div class="clipped-corner border-2 border-primary bg-surface-container-lowest p-lg flex flex-col h-full step-active">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">package_2</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase mb-sm">Unboxing &amp; Inspection</h3>
+<p class="text-on-surface-variant font-body-md flex-grow">Remove the Smart Ruler core and calibration plate. Ensure the tamper-proof seal is intact and visual sensors are clean.</p>
+<div class="mt-lg border-t border-outline-variant pt-md">
+<button class="w-full bg-primary text-on-primary py-sm font-label-caps text-label-caps uppercase tracking-widest hover:brightness-110 transition-all">
+                                COMPLETE STEP
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group relative opacity-70 hover:opacity-100 transition-opacity">
+<div class="absolute -top-3 -left-3 bg-surface-container-highest text-on-surface font-code-sm px-2 py-1 z-10">02</div>
+<div class="clipped-corner border border-outline-variant bg-surface-container-low p-lg flex flex-col h-full">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant">precision_manufacturing</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase mb-sm">Physical Mounting</h3>
+<p class="text-on-surface-variant font-body-md flex-grow">Align the magnetic mounting brackets to your workspace rail. Secure with the provided M4 bolts to 5Nm torque.</p>
+<div class="mt-lg border-t border-outline-variant pt-md">
+<button class="w-full border border-outline-variant text-on-surface-variant py-sm font-label-caps text-label-caps uppercase tracking-widest cursor-not-allowed">
+                                LOCKED
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group relative opacity-70 hover:opacity-100 transition-opacity">
+<div class="absolute -top-3 -left-3 bg-surface-container-highest text-on-surface font-code-sm px-2 py-1 z-10">03</div>
+<div class="clipped-corner border border-outline-variant bg-surface-container-low p-lg flex flex-col h-full">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant">bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase mb-sm">Power Connection</h3>
+<p class="text-on-surface-variant font-body-md flex-grow">Connect the USB-C high-speed cable to a 20W power source. Wait for the status ring to pulse amber.</p>
+<div class="mt-lg border-t border-outline-variant pt-md">
+<button class="w-full border border-outline-variant text-on-surface-variant py-sm font-label-caps text-label-caps uppercase tracking-widest cursor-not-allowed">
+                                LOCKED
+                            </button>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="group relative opacity-70 hover:opacity-100 transition-opacity">
+<div class="absolute -top-3 -left-3 bg-surface-container-highest text-on-surface font-code-sm px-2 py-1 z-10">04</div>
+<div class="clipped-corner border border-outline-variant bg-surface-container-low p-lg flex flex-col h-full">
+<div class="mb-lg">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant">sync</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase mb-sm">Software Sync</h3>
+<p class="text-on-surface-variant font-body-md flex-grow">Launch the OS pairing utility. Hold the sync button for 3 seconds to initiate the wireless handshake.</p>
+<div class="mt-lg border-t border-outline-variant pt-md">
+<button class="w-full border border-outline-variant text-on-surface-variant py-sm font-label-caps text-label-caps uppercase tracking-widest cursor-not-allowed">
+                                LOCKED
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Detail Section -->
+<section class="mt-xl grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Visual Component -->
+<div class="lg:col-span-2 header-clipped border border-outline-variant bg-surface-container relative h-[400px] overflow-hidden group">
+<div class="absolute top-0 right-0 p-lg z-10">
+<div class="font-label-caps text-label-caps bg-surface/80 backdrop-blur-md px-sm py-xs border border-primary/30 text-primary">REAL-TIME_FEED_01</div>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A high-tech industrial workstation featuring a futuristic measuring device with glowing orange accents. The lighting is low-key with sharp highlights on the metallic surfaces and circuit patterns. A sophisticated laboratory setting is visible in the blurred background, emphasizing a high-performance research environment. The image uses a palette of deep charcoal, slate gray, and vibrant orange to maintain brand cohesion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi4fLvhRt7FzoSNrFhvcw93_JpVLp0z4M9s06zuFHnxpIocKYvBgfKRMvm1FaFnsEDQ_2A-c_q8UcW7NlI0MOt1WTatdLPXA5H_omwLBa_9PFnv1lR9x_qkbj791SgsM24tgItHL4v-MFrMeyfztepVpZWNBZJ2euJ979W8AIspwKYhiLjMI-feIwDATFDlA65i5XKGSxHiRk62OVh5ykSLmKbKCGn1aJRw5G2G1Pb1SSLqVU2oooxqGpYBrXxHroRoyhBrcJ9aa0"/>
+<div class="absolute inset-0 pointer-events-none border-[20px] border-transparent border-t-primary/5 border-l-primary/5"></div>
+</div>
+<!-- Technical Specs Panel -->
+<div class="bg-surface-container-high border border-outline-variant p-lg flex flex-col justify-between relative">
+<div class="absolute top-0 right-0 w-8 h-8 flex items-center justify-center">
+<div class="w-[1px] h-full bg-outline-variant rotate-45"></div>
+</div>
+<div>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-2 h-2 bg-primary"></div>
+<h2 class="font-label-caps text-label-caps uppercase tracking-widest">Hardware Requirements</h2>
+</div>
+<ul class="space-y-md">
+<li class="flex justify-between border-b border-outline-variant pb-sm">
+<span class="font-body-md text-on-surface-variant">OS COMPATIBILITY</span>
+<span class="font-code-sm text-primary">V2.0+</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-sm">
+<span class="font-body-md text-on-surface-variant">VOLTAGE INPUT</span>
+<span class="font-code-sm text-primary">5V DC / 2A</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-sm">
+<span class="font-body-md text-on-surface-variant">SIGNAL RANGE</span>
+<span class="font-code-sm text-primary">15 METERS</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-sm">
+<span class="font-body-md text-on-surface-variant">CERTIFICATION</span>
+<span class="font-code-sm text-primary">ISO-9001</span>
+</li>
+</ul>
+</div>
+<div class="mt-xl p-md bg-surface-container border border-outline-variant">
+<div class="flex gap-sm items-start">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">warning</span>
+<p class="font-code-sm text-[12px] leading-tight text-on-surface-variant">CAUTION: Avoid direct laser exposure during Step 4 synchronization. Keep sensors away from reflective surfaces for optimal calibration.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Support Footer -->
+<footer class="md:ml-64 bg-surface border-t border-outline-variant p-lg">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-lg">
+<span class="font-label-caps text-label-caps text-on-surface-variant">INTERNAL_ID: SR-0994-X</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUPPORT_TOKEN: 882-K</span>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-sm border border-outline-variant text-on-surface hover:border-primary hover:text-primary transition-all font-label-caps text-label-caps">DOWNLOAD PDF MANUAL</button>
+<button class="px-lg py-sm bg-surface-container-highest hover:bg-surface-variant text-on-surface transition-all font-label-caps text-label-caps">CONTACT OPERATOR</button>
+</div>
+</div>
+</footer>
+</body></html>

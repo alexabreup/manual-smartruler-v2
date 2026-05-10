@@ -1,0 +1,369 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="SmartRuler OS | Instalação">
+	<div class="page-container">
+    <div class="content-wrapper">
+      {/* Installation Hero */}
+      <div class="page-header">
+        <div class="corner-bracket tl"></div>
+        <div class="corner-bracket tr"></div>
+        <p class="module-id">MODULE_ID: INSTALL_01</p>
+        <h1 class="page-title">System Deployment</h1>
+        <p class="page-intro">
+          Follow the precise sequence for hardware calibration and firmware synchronization.
+        </p>
+      </div>
+
+      {/* Step List */}
+      <div class="step-list">
+        {/* Step 1 */}
+        <div class="step-card">
+          <div class="step-row">
+            <div class="step-number">01</div>
+            <div class="step-body">
+              <div class="step-title-row">
+                <span class="material-symbols-outlined step-icon">power</span>
+                <h3 class="step-title">Initialization</h3>
+              </div>
+              <p class="step-text">Connect the Smart Ruler interface via USB-C to your workstation. Ensure the status LED flashes orange.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Step 2 - Active State */}
+        <div class="step-card active">
+          <div class="active-badge"></div>
+          <div class="step-row">
+            <div class="step-number primary">02</div>
+            <div class="step-body">
+              <div class="step-title-row">
+                <span class="material-symbols-outlined step-icon primary">sync</span>
+                <h3 class="step-title primary-text">Firmware Sync</h3>
+              </div>
+              <p class="step-text primary-font">Launch the SMART RULER desktop client and select "Connect Device" from the primary dashboard.</p>
+              <div class="step-media">
+                <img class="step-img" alt="Software Interface Sync" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0LXAr4o9nJ7OR7sUzBKhghZG2pzKmpOYAy3aLJ0_S6MaQeniJu3PAMjjuRKEvAXbIFGk8lq8WSNrER5upPVay_xd8O1WJ5sFtJPr6zh1aoRdqEXBrBh-g-WIcx2wNJocEcq-1XteN_lYMk3euRYtbtLwgXH4NXbmZDv0JkFvChXNa0CN_658VhViThYR0fWs9S_7Q591D6DJBjMzO71wW0KVLd-I6dtbqSayyZWbirxbDXc5-qb-FeuV96DjQ6LzOwyhk9WHy9u4" />
+                <p class="media-caption">FIG. 02: SOFTWARE INTERFACE SYNC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Step 3 */}
+        <div class="step-card disabled">
+          <div class="step-row">
+            <div class="step-number disabled">03</div>
+            <div class="step-body">
+              <div class="step-title-row">
+                <span class="material-symbols-outlined step-icon">straighten</span>
+                <h3 class="step-title">Calibration</h3>
+              </div>
+              <p class="step-text">Place the ruler on a flat, non-reflective surface. Press the 'CAL' button for 3 seconds until synchronized.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Progress Tracking */}
+      <div class="progress-section">
+        <div class="progress-labels">
+          <span>DEPLOYMENT STATUS</span>
+          <span>50% COMPLETE</span>
+        </div>
+        <div class="progress-segments">
+          {[...Array(10)].map((_, i) => (
+            <div class={`segment ${i < 5 ? 'active' : ''}`}></div>
+          ))}
+        </div>
+      </div>
+
+      {/* Navigation Footer */}
+      <div class="nav-footer">
+        <a href="/" class="nav-link-btn prev">
+          <span class="material-symbols-outlined">arrow_back</span>
+          <span class="btn-text">VOLTAR</span>
+        </a>
+        <a href="/especificacoes" class="nav-link-btn next">
+          <span class="btn-text">PRÓXIMO</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: 16px;
+    padding-bottom: 48px;
+  }
+
+  .content-wrapper {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    position: relative;
+    padding-top: 24px;
+  }
+
+  .corner-bracket {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-top: 2px solid var(--primary);
+    opacity: 0.8;
+  }
+
+  .corner-bracket.tl { top: -16px; left: -16px; border-left: 2px solid var(--primary); }
+  .corner-bracket.tr { top: -16px; right: -16px; border-right: 2px solid var(--primary); }
+
+  .module-id {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+  }
+
+  .page-intro {
+    color: var(--on-surface-variant);
+    border-left: 2px solid var(--primary);
+    padding-left: 16px;
+    font-style: italic;
+    margin: 0;
+    font-family: var(--font-body);
+  }
+
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .step-card {
+    background-color: var(--surface-container);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .step-card.active {
+    border: 2px solid var(--primary);
+  }
+
+  .step-card.disabled {
+    opacity: 0.6;
+  }
+
+  .active-badge {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary);
+    transform: rotate(45deg);
+  }
+
+  .step-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (min-width: 640px) {
+    .step-row {
+      flex-direction: row;
+    }
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--primary-rgb), 0.2);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .step-number.primary {
+    background-color: var(--primary);
+    color: black;
+  }
+
+  .step-number.disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--on-surface-variant);
+  }
+
+  .step-body {
+    flex-grow: 1;
+  }
+
+  .step-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .step-icon {
+    color: var(--primary);
+    font-size: 18px;
+  }
+
+  .step-icon.primary { color: var(--primary); }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .step-title.primary-text {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .step-text {
+    color: var(--on-surface-variant);
+    font-family: var(--font-body);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .step-text.primary-font {
+    color: var(--on-surface);
+  }
+
+  .step-media {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(var(--primary-rgb), 0.5);
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .step-img {
+    width: 100%;
+    filter: grayscale(1) brightness(0.75) contrast(1.25);
+    margin-bottom: 8px;
+  }
+
+  .media-caption {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.05em;
+  }
+
+  .progress-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .progress-segments {
+    display: flex;
+    gap: 4px;
+    height: 8px;
+  }
+
+  .segment {
+    flex: 1;
+    background-color: var(--surface-bright);
+  }
+
+  .segment.active {
+    background-color: var(--primary);
+  }
+
+  .nav-footer {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 48px;
+  }
+
+  @media (min-width: 640px) {
+    .nav-footer {
+      flex-direction: row;
+    }
+  }
+
+  .nav-link-btn {
+    flex: 1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .nav-link-btn.prev {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--on-surface);
+  }
+
+  .nav-link-btn.prev:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-link-btn.next {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: black;
+  }
+
+  .nav-link-btn.next:hover {
+    filter: brightness(1.1);
+  }
+
+  .nav-link-btn:active {
+    transform: scale(0.95);
+  }
+</style>

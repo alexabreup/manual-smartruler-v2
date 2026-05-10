@@ -1,0 +1,9 @@
+
+> manual-smartruler-v2@2.0.0 preview
+> astro preview --host 0.0.0.0 --port 4324 --host 127.0.0.1 --port 4324
+
+Port 4321 is in use, trying another one...
+Port 4322 is in use, trying another one...
+[42m[1m astro [22m[49m [32mv6.3.1[39m [2mready in[22m 45 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4323/[39m
+[2m┃[22m Network  [2muse --host to expose[22m

@@ -1,0 +1,87 @@
+---
+import '../styles/custom.css';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import MobileNav from '../components/MobileNav.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Manual SmartRuler OS" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+    
+      if (theme === 'light') {
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
+      }
+      window.localStorage.setItem('theme', theme);
+    </script>
+	</head>
+	<body>
+    <Header />
+    <div class="app-layout">
+      <Sidebar />
+      <main class="main-content">
+        <slot />
+      </main>
+    </div>
+    <MobileNav />
+	</body>
+</html>
+
+<style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-layout {
+    display: flex;
+    flex: 1;
+    position: relative;
+  }
+
+  .main-content {
+    flex: 1;
+    width: 100%;
+    padding-top: 64px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+  }
+
+  @media (min-width: 768px) {
+    .main-content {
+      padding-top: 80px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .main-content {
+      padding-left: 280px;
+      padding-bottom: 0;
+    }
+  }
+</style>

@@ -1,0 +1,731 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="SmartRuler OS | Especificações">
+	<div class="page-container">
+    <div class="content-wrapper">
+      {/* Page Header */}
+      <div class="page-header">
+        <p class="module-ref">DOCUMENTATION_REF: SR_SPECS_V2</p>
+        <h1 class="page-title">Technical Architecture</h1>
+      </div>
+
+      <div class="tech-grid">
+        {/* Core Processor */}
+        <div class="tech-card">
+          <div class="card-id">UNIT_01</div>
+          <div class="card-header">
+            <div class="card-icon-box">
+              <span class="material-symbols-outlined">memory</span>
+            </div>
+            <h3 class="card-title">Processing Core</h3>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row">
+              <span class="spec-label">Chipset</span>
+              <span class="spec-value">ALX-32 ULTRA</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Clock Speed</span>
+              <span class="spec-value">240MHZ DUAL-CORE</span>
+            </div>
+            <div class="spec-row last">
+              <span class="spec-label">Memory</span>
+              <span class="spec-value">520KB SRAM</span>
+            </div>
+          </div>
+          <div class="scanning-line"></div>
+        </div>
+
+        {/* Connectivity */}
+        <div class="tech-card">
+          <div class="card-id">UNIT_02</div>
+          <div class="card-header">
+            <div class="card-icon-box">
+              <span class="material-symbols-outlined">wifi</span>
+            </div>
+            <h3 class="card-title">Connectivity</h3>
+          </div>
+          <div class="card-specs">
+            <div class="spec-row">
+              <span class="spec-label">Protocol</span>
+              <span class="spec-value">802.11 B/G/N</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Bluetooth</span>
+              <span class="spec-value">V4.2 BR/EDR</span>
+            </div>
+            <div class="spec-row last">
+              <span class="spec-label">Antenna</span>
+              <span class="spec-value">INTERNAL PCB</span>
+            </div>
+          </div>
+          <div class="scanning-line"></div>
+        </div>
+
+        {/* Physical Specs */}
+        <div class="tech-card full-width">
+          <div class="card-id">UNIT_03</div>
+          <div class="card-header">
+            <div class="card-icon-box">
+              <span class="material-symbols-outlined">straighten</span>
+            </div>
+            <h3 class="card-title">Physical Dimensions</h3>
+          </div>
+          <div class="phys-stats">
+            <div class="phys-item">
+              <span class="phys-label">Length</span>
+              <span class="phys-value">300mm</span>
+            </div>
+            <div class="phys-item">
+              <span class="phys-label">Weight</span>
+              <span class="phys-value">145g</span>
+            </div>
+            <div class="phys-item">
+              <span class="phys-label">Casing</span>
+              <span class="phys-value">Polycarbonate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bento Grid Layout */}
+      <div class="bento-grid">
+        {/* Power Specs Module */}
+        <section class="bento-module large">
+          <div class="module-header">
+            <span class="module-title">01_ELECTRICAL_LOAD</span>
+            <span class="module-meta">V_INPUT / I_MAX</span>
+          </div>
+          <div class="module-body split">
+            <div class="spec-lines">
+              <div class="spec-line primary-line">
+                <span class="label">INPUT VOLTAGE</span>
+                <span class="value">110-240V AC</span>
+              </div>
+              <div class="spec-line">
+                <span class="label">FREQUENCY</span>
+                <span class="value">50/60HZ</span>
+              </div>
+              <div class="spec-line primary-line">
+                <span class="label">MAX CURRENT</span>
+                <span class="value">16A TOTAL</span>
+              </div>
+            </div>
+            <div class="load-dist">
+              <div class="dist-label">LOAD DISTRIBUTION</div>
+              <div class="dist-bar">
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment"></div>
+                <div class="dist-segment"></div>
+                <div class="dist-segment"></div>
+                <div class="dist-segment"></div>
+                <div class="dist-segment"></div>
+                <div class="dist-segment"></div>
+              </div>
+              <div class="dist-scale">
+                <span>0%</span>
+                <span class="peak">40% PEAK</span>
+                <span>100%</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Outlets Module */}
+        <section class="bento-module small chamfer">
+          <div class="module-header">
+            <span class="module-title">02_INTERFACE</span>
+            <span class="material-symbols-outlined icon-small">bolt</span>
+          </div>
+          <div class="module-body centered">
+            <div class="outlet-count">08</div>
+            <div class="outlet-label">PROGRAMMABLE OUTLETS</div>
+            <div class="outlet-visual">
+              {[...Array(8)].map(() => (
+                <div class="outlet-dot"></div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Communication Module */}
+        <section class="bento-module medium relative overflow-hidden">
+          <div class="module-bg-icon">
+            <span class="material-symbols-outlined">sensors</span>
+          </div>
+          <div class="module-header">
+            <span class="module-title">03_CONNECTIVITY</span>
+          </div>
+          <div class="module-body">
+            <div class="conn-grid">
+              <div class="conn-card active">
+                <div class="conn-top">
+                  <span class="material-symbols-outlined">wifi</span>
+                  <span class="status-badge active">ACTIVE</span>
+                </div>
+                <h3 class="conn-title">WI-FI 6E</h3>
+                <p class="conn-desc">Dual-band 2.4/5GHz / 802.11ax</p>
+              </div>
+              <div class="conn-card">
+                <div class="conn-top">
+                  <span class="material-symbols-outlined">hub</span>
+                  <span class="status-badge">STANDBY</span>
+                </div>
+                <h3 class="conn-title">ZIGBEE 3.0</h3>
+                <p class="conn-desc">Mesh network control</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed Data Table */}
+        <section class="bento-module full-width">
+          <div class="module-header">
+            <span class="module-title">PROTOCOL_STACK_OVERVIEW</span>
+          </div>
+          <div class="table-container">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Layer ID</th>
+                  <th>Communication Logic</th>
+                  <th>Operational Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="primary-text">L1_PHYSICAL</td>
+                  <td>IEEE 802.11 / 802.15.4</td>
+                  <td><div class="status-pill"><div class="dot glow"></div> NOMINAL</div></td>
+                </tr>
+                <tr>
+                  <td class="primary-text">L2_TRANSPORT</td>
+                  <td>UDP / TCP (Thread Support)</td>
+                  <td><div class="status-pill"><div class="dot glow"></div> NOMINAL</div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      {/* Warning Box */}
+      <div class="warning-box">
+        <span class="material-symbols-outlined error-icon">warning</span>
+        <div class="warning-content">
+          <div class="timestamp-label">LAST UPDATED</div>
+          <div class="timestamp-value">2025.10.24 14:30:05</div>
+        </div>
+        <span class="material-symbols-outlined verified-icon">verified</span>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    padding: 16px;
+    padding-bottom: 80px;
+  }
+
+  .content-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 24px;
+  }
+
+  .module-ref {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .tech-card.full-width {
+      grid-column: span 2;
+    }
+  }
+
+  .tech-card {
+    background-color: var(--surface-container);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    opacity: 0.3;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card-icon-box {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(var(--primary-rgb), 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(var(--primary-rgb), 0.4);
+  }
+
+  .card-icon-box .material-symbols-outlined {
+    color: var(--primary);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .card-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+  }
+
+  .spec-row.last {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .spec-label {
+    color: var(--on-surface-variant);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .spec-value {
+    color: var(--on-surface);
+    font-family: var(--font-mono);
+    font-weight: bold;
+  }
+
+  .phys-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 640px) {
+    .phys-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .phys-item {
+    padding: 16px;
+    background-color: rgba(55, 57, 63, 0.1);
+    border-left: 2px solid var(--primary);
+  }
+
+  .phys-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .phys-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* Bento Grid */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .bento-module.large { grid-column: span 8; }
+    .bento-module.small { grid-column: span 4; }
+    .bento-module.medium { grid-column: span 6; }
+    .bento-module.full-width { grid-column: span 12; }
+  }
+
+  .bento-module {
+    background-color: var(--surface-container);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+  }
+
+  .bento-module.chamfer {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+
+  .module-header {
+    background-color: var(--surface-container-high);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .module-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--primary);
+  }
+
+  .module-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    opacity: 0.5;
+  }
+
+  .module-body {
+    padding: 24px;
+  }
+
+  .module-body.split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .module-body.split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .spec-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .spec-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .spec-line.primary-line {
+    border-bottom-color: rgba(var(--primary-rgb), 0.3);
+  }
+
+  .spec-line .label {
+    font-family: var(--font-mono);
+    color: var(--on-surface-variant);
+    font-size: 12px;
+  }
+
+  .spec-line .value {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    color: var(--on-surface);
+  }
+
+  .primary-line .value {
+    color: var(--primary);
+  }
+
+  .load-dist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dist-label {
+    text-align: center;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    color: var(--on-surface-variant);
+    font-size: 12px;
+  }
+
+  .dist-bar {
+    display: flex;
+    gap: 4px;
+    height: 48px;
+  }
+
+  .dist-segment {
+    flex: 1;
+    background-color: rgba(var(--primary-rgb), 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dist-segment.active {
+    background-color: var(--primary);
+    border-color: rgba(var(--primary-rgb), 0.2);
+  }
+
+  .dist-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(var(--primary-rgb), 0.6);
+  }
+
+  .dist-scale .peak {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .module-body.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 200px;
+  }
+
+  .outlet-count {
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .outlet-label {
+    font-family: var(--font-mono);
+    color: var(--on-surface-variant);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .outlet-visual {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .outlet-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary);
+  }
+
+  .module-bg-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  .module-bg-icon .material-symbols-outlined {
+    font-size: 180px;
+    color: var(--primary);
+  }
+
+  .conn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .conn-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .conn-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    background-color: rgba(17, 19, 24, 0.5);
+  }
+
+  .conn-card.active {
+    border-color: rgba(var(--primary-rgb), 0.2);
+  }
+
+  .conn-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 16px;
+  }
+
+  .conn-top .material-symbols-outlined {
+    color: var(--primary);
+  }
+
+  .status-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    background-color: rgba(var(--primary-rgb), 0.2);
+    color: var(--primary);
+  }
+
+  .status-badge.active {
+    background-color: var(--primary);
+    color: black;
+  }
+
+  .conn-title {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .conn-desc {
+    font-size: 11px;
+    color: var(--on-surface-variant);
+    margin: 4px 0 0 0;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  .tech-table th {
+    background-color: rgba(12, 14, 19, 1);
+    padding: 16px;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .tech-table td {
+    padding: 16px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .tech-table tr:hover {
+    background-color: rgba(var(--primary-rgb), 0.05);
+  }
+
+  .primary-text {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50% !important;
+    background-color: var(--primary);
+  }
+
+  .dot.glow {
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.6);
+  }
+
+  .warning-box {
+    margin-top: 48px;
+    padding: 24px;
+    background-color: rgba(255, 180, 171, 0.1);
+    border-left: 4px solid var(--error);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .error-icon { color: var(--error); }
+  .verified-icon { color: var(--primary); font-size: 32px; margin-left: auto; }
+
+  .timestamp-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+  }
+
+  .timestamp-value {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--primary);
+  }
+</style>

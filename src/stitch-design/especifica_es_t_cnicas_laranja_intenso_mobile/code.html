@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SMART RULER OS | Technical Specifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#1e2025",
+                    "secondary-fixed-dim": "#c6c6cd",
+                    "tertiary-fixed": "#e2e2e2",
+                    "surface-variant": "#33353a",
+                    "on-tertiary": "#2f3131",
+                    "on-primary-container": "#ffffff",
+                    "outline-variant": "#574238",
+                    "primary-container": "#ED712E",
+                    "tertiary-container": "#949595",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0c0e13",
+                    "surface-bright": "#37393f",
+                    "primary": "#ED712E",
+                    "on-primary-fixed": "#351000",
+                    "on-secondary": "#2e3036",
+                    "on-secondary-fixed": "#1a1c21",
+                    "primary-fixed": "#ffdbcc",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "surface": "#111318",
+                    "on-surface": "#e2e2e9",
+                    "on-surface-variant": "#dfc0b3",
+                    "background": "#111318",
+                    "surface-tint": "#ED712E",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "inverse-primary": "#a14000",
+                    "surface-container-low": "#1a1c21",
+                    "surface-container-high": "#282a2f",
+                    "surface-container-highest": "#33353a",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "inverse-on-surface": "#2e3036",
+                    "secondary-container": "#47494f",
+                    "surface-dim": "#111318",
+                    "outline": "#ED712E",
+                    "inverse-surface": "#e2e2e9",
+                    "on-secondary-container": "#b7b8bf",
+                    "on-error": "#690005",
+                    "secondary": "#c6c6cd",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-background": "#e2e2e9",
+                    "on-primary": "#000000",
+                    "tertiary": "#c6c6c7",
+                    "error": "#ffb4ab",
+                    "secondary-fixed": "#e2e2e9",
+                    "primary-fixed-dim": "#ED712E",
+                    "on-tertiary-container": "#2c2e2e",
+                    "on-secondary-fixed-variant": "#45474c",
+                    "error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0rem",
+                    "lg": "0rem",
+                    "xl": "0rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "20px",
+                    "xl": "48px",
+                    "unit": "4px",
+                    "container-max": "1280px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Space Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-caps": ["JetBrains Mono"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chamfer-hover:hover {
+            clip-path: polygon(0% 0%, 92% 0%, 100% 18%, 100% 100%, 0% 100%);
+        }
+        .technical-divider {
+            background-image: repeating-linear-gradient(90deg, #ED712E, #ED712E 2px, transparent 2px, transparent 10px);
+            height: 1px;
+            width: 100%;
+            opacity: 0.5;
+        }
+        .corner-bracket::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            border-top: 2px solid #ED712E;
+            border-left: 2px solid #ED712E;
+        }
+        .corner-bracket::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            border-bottom: 2px solid #ED712E;
+            border-right: 2px solid #ED712E;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-white/10">
+<nav class="flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary tracking-tighter">SMART RULER OS</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">HOME</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">INTRO</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">INSTALL</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">TECH SPEC</a>
+</div>
+<div class="flex gap-md">
+<button class="text-primary p-xs hover:bg-surface-variant/30 transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="text-primary p-xs hover:bg-surface-variant/30 transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-20 px-gutter min-h-screen">
+<!-- Page Header Section -->
+<section class="mb-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-caps text-primary">MODULE_ID: TS-992-V2</span>
+<div class="technical-divider flex-1"></div>
+</div>
+<h1 class="font-display-lg text-headline-lg text-on-surface mb-2">TECHNICAL SPECIFICATIONS</h1>
+<p class="font-body-md text-on-surface-variant max-w-lg">Core hardware architecture and software kernel parameters for the SMART RULER OS mobile implementation.</p>
+</section>
+<!-- Bento Grid Feature Highlight -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-md mb-xl">
+<div class="col-span-2 relative p-lg bg-surface-container border border-white/10 corner-bracket overflow-hidden group">
+<div class="relative z-10">
+<span class="font-label-caps text-primary block mb-md">SYSTEM KERNEL</span>
+<h2 class="font-headline-md text-on-surface mb-sm">QUANTUM_V4 ARCHITECTURE</h2>
+<p class="font-body-md text-on-surface-variant">Real-time telemetry processing with &lt;2ms latency across distributed sensor arrays.</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="memory">memory</span>
+</div>
+</div>
+<div class="p-lg bg-surface-container border border-white/10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-headline-lg">speed</span>
+<div>
+<div class="font-label-caps text-on-surface-variant">THROUGHPUT</div>
+<div class="font-headline-md text-primary">12.8 GB/s</div>
+</div>
+</div>
+<div class="p-lg bg-surface-container border border-white/10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-headline-lg">security</span>
+<div>
+<div class="font-label-caps text-on-surface-variant">ENCRYPTION</div>
+<div class="font-headline-md text-primary">AES-XTS</div>
+</div>
+</div>
+</section>
+<!-- Accordion Spec Tables -->
+<section class="space-y-sm">
+<!-- Category: Hardware -->
+<details class="group border border-white/10 bg-surface-container-low transition-all duration-300" open="">
+<summary class="flex justify-between items-center p-md cursor-pointer hover:bg-surface-bright/20 transition-colors list-none">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">hardware</span>
+<span class="font-label-caps text-on-surface">HARDWARE ARCHITECTURE</span>
+</div>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<div class="border-t border-white/10 pt-md space-y-md">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">PROCESSOR</span>
+<span class="font-label-caps text-primary text-right">OCTA-CORE 3.4GHZ HYPERLINK</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">MEMORY_ARRAY</span>
+<span class="font-label-caps text-primary text-right">32GB LPDDR5X ECC</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">STORAGE_NVME</span>
+<span class="font-label-caps text-primary text-right">1TB GEN-4 FLASH</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">GPU_CLUSTER</span>
+<span class="font-label-caps text-primary text-right">VECTOR-SYNC 12-CORE</span>
+</div>
+</div>
+</div>
+</details>
+<!-- Category: Visual Interface -->
+<details class="group border border-white/10 bg-surface-container-low transition-all duration-300">
+<summary class="flex justify-between items-center p-md cursor-pointer hover:bg-surface-bright/20 transition-colors list-none">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">display_settings</span>
+<span class="font-label-caps text-on-surface">VISUAL INTERFACE</span>
+</div>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<div class="border-t border-white/10 pt-md space-y-md">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">PANEL_TYPE</span>
+<span class="font-label-caps text-primary text-right">OLED 144HZ ADAPTIVE</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">RESOLUTION</span>
+<span class="font-label-caps text-primary text-right">3840 X 2160 (UHD+)</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">PEAK_BRIGHTNESS</span>
+<span class="font-label-caps text-primary text-right">2500 NITS HDR10+</span>
+</div>
+</div>
+</div>
+</details>
+<!-- Category: Sensor Suite -->
+<details class="group border border-white/10 bg-surface-container-low transition-all duration-300">
+<summary class="flex justify-between items-center p-md cursor-pointer hover:bg-surface-bright/20 transition-colors list-none">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">sensors</span>
+<span class="font-label-caps text-on-surface">SENSOR SUITE</span>
+</div>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<div class="border-t border-white/10 pt-md space-y-md">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">LIDAR_SCANNER</span>
+<span class="font-label-caps text-primary text-right">DEPTH-MAP V2 (0.1MM ACC)</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">ACCELEROMETER</span>
+<span class="font-label-caps text-primary text-right">6-AXIS G-FORCE SENSE</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">CHRONO_SYNC</span>
+<span class="font-label-caps text-primary text-right">ATOMIC-LOCK V3</span>
+</div>
+</div>
+</div>
+</details>
+<!-- Category: Connectivity -->
+<details class="group border border-white/10 bg-surface-container-low transition-all duration-300">
+<summary class="flex justify-between items-center p-md cursor-pointer hover:bg-surface-bright/20 transition-colors list-none">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="font-label-caps text-on-surface">CONNECTIVITY HUB</span>
+</div>
+<span class="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-md pb-md">
+<div class="border-t border-white/10 pt-md space-y-md">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">WIRELESS</span>
+<span class="font-label-caps text-primary text-right">WIFI-7 / 6E DUAL-BAND</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">CELLULAR</span>
+<span class="font-label-caps text-primary text-right">5G MM-WAVE ULTRALINK</span>
+</div>
+<div class="technical-divider opacity-20"></div>
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-on-surface-variant">PORT_PROTO</span>
+<span class="font-label-caps text-primary text-right">USB-C 4.0 (80GBPS)</span>
+</div>
+</div>
+</div>
+</details>
+</section>
+<!-- Technical Footnote -->
+<section class="mt-xl p-md border border-dashed border-primary/40 bg-surface-dim">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">info</span>
+<div class="space-y-sm">
+<p class="font-label-caps text-primary">OPERATIONAL_WARNING</p>
+<p class="font-code-sm text-on-surface-variant">Specifications are subject to change based on real-time hardware thermal constraints and software optimization protocols. Ensure all firmware versions are synchronized before proceeding with manual calibration.</p>
+</div>
+</div>
+</section>
+<!-- Visual Decorative Block -->
+<section class="mt-lg h-48 relative overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="A high-tech circuit board with glowing orange energy paths running through intricate silicone pathways. The image is captured in a macro perspective, showcasing the sharp edges and industrial precision of modern microchips. Dramatic high-contrast lighting highlights the metallic surfaces and architectural complexity of the hardware. The overall atmosphere is futuristic and authoritative, reflecting a sophisticated mission-control aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkuP7AWS8Hxrd-Ae8vy17bKTLOEYq3F3Z0BCa9VT-Pb2hNyHy2XvK_SfSrwaAEofWjz-dohaP1pnEqdRjJ18xIuu-_9Jzp0dUWDXdwrno3aNkvNw_LLj3A6HYFdJvPlcVLFe1bcYLnFf5jD5kGYPTW-xsp8nu6bj2UShMB_HoXqPmHOcZwi8xaYOI41QgdrYRduwNRU5nxntK9q_AoxuTw8rfYM8hGJYup7fD7Q5aOjyf24pODwGUWZHFxuQldKhGmn5Nnzratkso"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-md left-md flex flex-col">
+<span class="font-label-caps text-primary">HARDWARE_SCAN_STATUS</span>
+<div class="flex gap-xs mt-sm">
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary"></div>
+<div class="w-2 h-2 bg-primary/30"></div>
+<div class="w-2 h-2 bg-primary/30"></div>
+<div class="w-2 h-2 bg-primary/30"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- SideNavBar (Shared Component Pivot) - Hidden on mobile, shown via overlay or sidebar on tablet+ -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-64 flex-col z-40 bg-surface-container border-r border-white/10">
+<div class="p-lg">
+<div class="font-display-lg text-primary mb-xl">S_OS</div>
+<div class="space-y-md">
+<div class="font-label-caps text-black border-r-4 border-black px-4 py-3 bg-primary flex items-center gap-md">
+<span class="material-symbols-outlined">grid_view</span>
+                DASHBOARD
+            </div>
+<div class="font-label-caps text-on-surface-variant px-4 py-3 hover:bg-primary/10 hover:text-primary flex items-center gap-md transition-all cursor-pointer">
+<span class="material-symbols-outlined">menu_book</span>
+                MANUAL
+            </div>
+<div class="font-label-caps text-on-surface-variant px-4 py-3 hover:bg-primary/10 hover:text-primary flex items-center gap-md transition-all cursor-pointer">
+<span class="material-symbols-outlined">settings_input_component</span>
+                SETUP
+            </div>
+<div class="font-label-caps text-on-surface-variant px-4 py-3 hover:bg-primary/10 hover:text-primary flex items-center gap-md transition-all cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+                DATA
+            </div>
+</div>
+</div>
+<div class="mt-auto p-lg border-t border-white/10">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-black">person</span>
+</div>
+<div>
+<div class="font-label-caps text-on-surface">OPERATOR_01</div>
+<div class="text-[10px] text-primary">V2.04 ACTIVE</div>
+</div>
+</div>
+<button class="w-full bg-primary text-black font-label-caps py-md chamfer-hover transition-all font-bold">
+            RUN DIAGNOSTIC
+        </button>
+<div class="mt-md font-label-caps text-on-surface-variant flex items-center gap-md px-4 py-3 hover:text-primary cursor-pointer">
+<span class="material-symbols-outlined">power_settings_new</span>
+            LOGOUT
+        </div>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container border-t border-primary/20 z-50 flex justify-around items-center py-sm">
+<button class="flex flex-col items-center gap-xs p-sm text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-label-caps">DASH</span>
+</button>
+<button class="flex flex-col items-center gap-xs p-sm text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-label-caps">MANUAL</span>
+</button>
+<button class="flex flex-col items-center gap-xs p-sm text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] font-label-caps">SPECS</span>
+</button>
+<button class="flex flex-col items-center gap-xs p-sm text-on-surface-variant active:text-primary">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">SETUP</span>
+</button>
+</nav>
+</body></html>
