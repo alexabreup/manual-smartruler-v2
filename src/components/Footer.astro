@@ -1,10 +1,69 @@
 ---
 ---
-
-<footer class="custom-footer">
+<footer class="main-footer">
   <div class="footer-container">
-    <strong>Manual SmartRuler Eletromidia V2</strong>
-    <span>Departamento de Projetos Eletromidia</span>
-    <a href="mailto:alexandre.abreu@eletromidia.com.br">alexandre.abreu@eletromidia.com.br</a>
+    <div class="footer-branding">
+      <span class="footer-logo">SMART RULER ELETROMIDIA</span>
+      <span class="footer-divider"></span>
+      <span class="footer-copyright">
+        © 2026 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE
+      </span>
+      <div class="footer-credits">
+        <p>Produzido por <strong>Alexandre de Abreu Pereira</strong></p>
+        <a href="mailto:alexandre.abreu@eletromidia.com.br" class="credit-link">alexandre.abreu@eletromidia.com.br</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<style>
+  .main-footer {
+    padding: 48px 24px;
+    background-color: var(--surface-container-low);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--primary);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--primary);
+    opacity: 0.3;
+  }
+
+  .footer-copyright {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--on-surface-variant);
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .main-footer {
+      padding: 32px 16px 96px 16px; /* Extra padding for mobile nav */
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SmartRulerScene from "../components/SmartRulerScene.tsx";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="SmartRuler OS | Comando Total">
@@ -135,22 +136,7 @@ import SmartRulerScene from "../components/SmartRulerScene.tsx";
       </div>
     </section>
 
-    {/* Footer */}
-    <footer class="home-footer">
-      <div class="footer-container">
-        <div class="footer-branding">
-          <span class="footer-logo">SMART RULER ELETROMIDIA</span>
-          <span class="footer-divider"></span>
-          <span class="footer-copyright"
-            >© 2026 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE</span
-          >
-        </div>
-        <div class="footer-links">
-          <a class="footer-link" href="#">POLÍTICA_DE_PRIVACIDADE</a>
-          <a class="footer-link" href="#">DOCS_DO_TERMINAL</a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </Layout>
 
@@ -651,86 +637,4 @@ import SmartRulerScene from "../components/SmartRulerScene.tsx";
     color: var(--primary);
   }
 
-  /* Footer */
-  .home-footer {
-    padding: 48px 0;
-    background-color: var(--surface-container-low);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .footer-container {
-    max-width: 1280px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-  }
-
-  @media (min-width: 768px) {
-    .footer-container {
-      flex-direction: row;
-    }
-  }
-
-  .footer-branding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  @media (min-width: 768px) {
-    .footer-branding {
-      flex-direction: row;
-    }
-  }
-
-  .footer-logo {
-    font-family: var(--font-display-lg);
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--primary);
-    letter-spacing: -0.05em;
-  }
-
-  .footer-divider {
-    display: none;
-    width: 1px;
-    height: 24px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  @media (min-width: 768px) {
-    .footer-divider {
-      display: block;
-    }
-  }
-
-  .footer-copyright {
-    font-family: var(--font-label-caps);
-    font-size: 10px;
-    color: var(--on-surface-variant);
-    text-align: center;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-  }
-
-  .footer-link {
-    font-family: var(--font-label-caps);
-    font-size: 10px;
-    color: var(--on-surface-variant);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-link:hover {
-    color: var(--primary);
-  }
 </style>
