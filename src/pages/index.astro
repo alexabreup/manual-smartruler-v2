@@ -1,54 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SmartRulerScene from '../components/SmartRulerScene.tsx';
+import Layout from "../layouts/Layout.astro";
+import SmartRulerScene from "../components/SmartRulerScene.tsx";
 ---
 
 <Layout title="SmartRuler OS | Comando Total">
-	<div class="home-container">
-		{/* Hero Section */}
-		<section class="hero-section">
-			<div class="hero-glow"></div>
-			
-			<div class="hero-content">
-				<div class="hero-text-block">
-					<div class="hero-label">
-						<span class="label-line"></span>
-						SISTEMA OPERACIONAL V.2025
-					</div>
-					<h1 class="hero-title">
-							SMART RULER:<br/>
-						<span class="highlight">COMANDO TOTAL</span>
-					</h1>
-					<p class="hero-description">
-            Manual de treinamento e operação Eletromidia 2025. Assuma o controle total da infraestrutura energética com precisão milimétrica e automação de última geração.
-          </p>
-					
-					<div class="hero-actions">
-						<a href="/introducao" class="btn btn-primary">
-								INICIAR TREINAMENTO <span class="material-symbols-outlined">play_arrow</span>
-						</a>
-						<a href="/especificacoes" class="btn btn-outline">
-								ESPECIFICAÇÕES <span class="material-symbols-outlined">description</span>
-						</a>
-					</div>
+  <div class="home-container">
+    {/* Hero Section */}
+    <section class="hero-section">
+      <div class="hero-glow"></div>
 
-					<div class="hero-stats">
-						<div class="stat-item">
-							<div class="stat-label">CORRENTE</div>
-							<div class="stat-value">10 A</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">VOLTAGEM</div>
-							<div class="stat-value">220V</div>
-						</div>
-						<div class="stat-item">
-							<div class="stat-label">CONTROLE E</div>
-							<div class="stat-value">MONITORAMENTO REMOTO</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="hero-visual">
+      <div class="hero-content">
+        <div class="hero-text-block">
+          <div class="hero-label">
+            <span class="label-line"></span>
+            SISTEMA OPERACIONAL V.2025
+          </div>
+          <h1 class="hero-title">
+            SMART RULER:<br />
+            <span class="highlight">COMANDO TOTAL</span>
+          </h1>
+          <p class="hero-description">
+            Manual de treinamento e operação Eletromidia. Assuma o controle
+            total da infraestrutura energética com precisão milimétrica e
+            automação de última geração.
+          </p>
+
+          <div class="hero-actions">
+            <a href="/introducao" class="btn btn-primary">
+              INICIAR TREINAMENTO <span class="material-symbols-outlined"
+                >play_arrow</span
+              >
+            </a>
+            <a href="/especificacoes" class="btn btn-outline">
+              ESPECIFICAÇÕES <span class="material-symbols-outlined"
+                >description</span
+              >
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-label">CORRENTE</div>
+              <div class="stat-value">10 A</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">VOLTAGEM</div>
+              <div class="stat-value">220V</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">CONTROLE E</div>
+              <div class="stat-value">MONITORAMENTO REMOTO</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
           <div class="hud-bracket-tl"></div>
           <div class="hud-bracket-br"></div>
           <div class="visual-serial">MODELO_SR_2025_REV_C</div>
@@ -59,8 +65,8 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
             <span class="status-dot"></span> SENSOR ATIVO
           </div>
         </div>
-			</div>
-		</section>
+      </div>
+    </section>
 
     {/* Feature Bento Grid */}
     <section class="features-section">
@@ -71,7 +77,9 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
         </div>
         <div class="header-line"></div>
         <button class="view-all-btn">
-            VER TODOS OS ARQUIVOS <span class="material-symbols-outlined">chevron_right</span>
+          VER TODOS OS ARQUIVOS <span class="material-symbols-outlined"
+            >chevron_right</span
+          >
         </button>
       </div>
 
@@ -84,7 +92,11 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
                 <span class="material-symbols-outlined icon-main">bolt</span>
               </div>
               <h3 class="card-title">Gestão de Energia Inteligente</h3>
-              <p class="card-description">Controle cada tomada individualmente com dashboards de consumo em tempo real e automação baseada em horários e picos de demanda.</p>
+              <p class="card-description">
+                Controle cada tomada individualmente com dashboards de consumo
+                em tempo real e automação baseada em horários e picos de
+                demanda.
+              </p>
             </div>
             <div class="card-bottom">
               <div class="data-box">
@@ -105,7 +117,10 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
           <div class="card-content">
             <span class="material-symbols-outlined icon-main">shield</span>
             <h3 class="card-title">Segurança de Rede</h3>
-            <p class="card-description">Protocolos de criptografia avançada e firewall integrado para proteção total dos seus ativos digitais.</p>
+            <p class="card-description">
+              Protocolos de criptografia avançada e firewall integrado para
+              proteção total dos seus ativos digitais.
+            </p>
             <div class="card-progress">
               <div class="progress-bar-container">
                 <div class="progress-fill" style="width: 75%"></div>
@@ -126,7 +141,9 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
         <div class="footer-branding">
           <span class="footer-logo">SMART RULER ELETROMIDIA</span>
           <span class="footer-divider"></span>
-          <span class="footer-copyright">© 2025 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE</span>
+          <span class="footer-copyright"
+            >© 2026 ELETROMIDIA - DEPARTAMENTO DE PROJETOS / HARDWARE</span
+          >
         </div>
         <div class="footer-links">
           <a class="footer-link" href="#">POLÍTICA_DE_PRIVACIDADE</a>
@@ -134,7 +151,7 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
         </div>
       </div>
     </footer>
-	</div>
+  </div>
 </Layout>
 
 <style>
@@ -393,9 +410,18 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
   }
 
   @keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.7; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.7; }
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
   }
 
   /* Features Section */
