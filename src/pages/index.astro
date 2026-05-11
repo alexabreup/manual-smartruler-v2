@@ -342,10 +342,11 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
 
   .hero-visual {
     position: relative;
-    height: 350px;
+    height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 
   @media (min-width: 768px) {
@@ -356,18 +357,19 @@ import SmartRulerScene from '../components/SmartRulerScene.tsx';
 
   .visual-serial {
     position: absolute;
-    top: -24px;
-    right: 0;
+    top: 8px;
+    right: 8px;
     font-family: var(--font-label-caps);
     font-size: 10px;
     color: var(--primary);
     opacity: 0.6;
+    z-index: 5;
   }
 
   .visual-canvas {
     width: 100%;
     height: 100%;
-    padding: 16px;
+    padding: 8px;
   }
 
   .visual-status {
