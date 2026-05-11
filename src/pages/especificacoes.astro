@@ -7,19 +7,19 @@ import Layout from '../layouts/Layout.astro';
     <div class="content-wrapper">
       {/* Page Header */}
       <div class="page-header">
-        <p class="module-ref">DOCUMENTATION_REF: SR_SPECS_V2</p>
-        <h1 class="page-title">Technical Architecture</h1>
+        <p class="module-ref">REF_DA_DOCUMENTACAO: SR_SPECS_V2</p>
+        <h1 class="page-title">Arquitetura Técnica</h1>
       </div>
 
       <div class="tech-grid">
         {/* Core Processor */}
         <div class="tech-card">
-          <div class="card-id">UNIT_01</div>
+          <div class="card-id">UNIDADE_01</div>
           <div class="card-header">
             <div class="card-icon-box">
               <span class="material-symbols-outlined">memory</span>
             </div>
-            <h3 class="card-title">Processing Core</h3>
+            <h3 class="card-title">Núcleo de Processamento</h3>
           </div>
           <div class="card-specs">
             <div class="spec-row">
@@ -27,11 +27,11 @@ import Layout from '../layouts/Layout.astro';
               <span class="spec-value">ALX-32 ULTRA</span>
             </div>
             <div class="spec-row">
-              <span class="spec-label">Clock Speed</span>
+              <span class="spec-label">Velocidade do Clock</span>
               <span class="spec-value">240MHZ DUAL-CORE</span>
             </div>
             <div class="spec-row last">
-              <span class="spec-label">Memory</span>
+              <span class="spec-label">Memória</span>
               <span class="spec-value">520KB SRAM</span>
             </div>
           </div>
@@ -40,12 +40,12 @@ import Layout from '../layouts/Layout.astro';
 
         {/* Connectivity */}
         <div class="tech-card">
-          <div class="card-id">UNIT_02</div>
+          <div class="card-id">UNIDADE_02</div>
           <div class="card-header">
             <div class="card-icon-box">
               <span class="material-symbols-outlined">wifi</span>
             </div>
-            <h3 class="card-title">Connectivity</h3>
+            <h3 class="card-title">Conectividade</h3>
           </div>
           <div class="card-specs">
             <div class="spec-row">
@@ -57,8 +57,8 @@ import Layout from '../layouts/Layout.astro';
               <span class="spec-value">V4.2 BR/EDR</span>
             </div>
             <div class="spec-row last">
-              <span class="spec-label">Antenna</span>
-              <span class="spec-value">INTERNAL PCB</span>
+              <span class="spec-label">Antena</span>
+              <span class="spec-value">PCB INTERNA</span>
             </div>
           </div>
           <div class="scanning-line"></div>
@@ -66,25 +66,25 @@ import Layout from '../layouts/Layout.astro';
 
         {/* Physical Specs */}
         <div class="tech-card full-width">
-          <div class="card-id">UNIT_03</div>
+          <div class="card-id">UNIDADE_03</div>
           <div class="card-header">
             <div class="card-icon-box">
               <span class="material-symbols-outlined">straighten</span>
             </div>
-            <h3 class="card-title">Physical Dimensions</h3>
+            <h3 class="card-title">Dimensões Físicas</h3>
           </div>
           <div class="phys-stats">
             <div class="phys-item">
-              <span class="phys-label">Length</span>
+              <span class="phys-label">Comprimento</span>
               <span class="phys-value">300mm</span>
             </div>
             <div class="phys-item">
-              <span class="phys-label">Weight</span>
+              <span class="phys-label">Peso</span>
               <span class="phys-value">145g</span>
             </div>
             <div class="phys-item">
-              <span class="phys-label">Casing</span>
-              <span class="phys-value">Polycarbonate</span>
+              <span class="phys-label">Carcaça</span>
+              <span class="phys-value">Policarbonato</span>
             </div>
           </div>
         </div>
@@ -95,26 +95,26 @@ import Layout from '../layouts/Layout.astro';
         {/* Power Specs Module */}
         <section class="bento-module large">
           <div class="module-header">
-            <span class="module-title">01_ELECTRICAL_LOAD</span>
-            <span class="module-meta">V_INPUT / I_MAX</span>
+            <span class="module-title">01_CARGA_ELETRICA</span>
+            <span class="module-meta">V_ENTRADA / I_MAX</span>
           </div>
           <div class="module-body split">
             <div class="spec-lines">
               <div class="spec-line primary-line">
-                <span class="label">INPUT VOLTAGE</span>
+                <span class="label">VOLTAGEM DE ENTRADA</span>
                 <span class="value">110-240V AC</span>
               </div>
               <div class="spec-line">
-                <span class="label">FREQUENCY</span>
+                <span class="label">FREQUÊNCIA</span>
                 <span class="value">50/60HZ</span>
               </div>
               <div class="spec-line primary-line">
-                <span class="label">MAX CURRENT</span>
+                <span class="label">CORRENTE MÁXIMA</span>
                 <span class="value">16A TOTAL</span>
               </div>
             </div>
             <div class="load-dist">
-              <div class="dist-label">LOAD DISTRIBUTION</div>
+              <div class="dist-label">DISTRIBUIÇÃO DE CARGA</div>
               <div class="dist-bar">
                 <div class="dist-segment active"></div>
                 <div class="dist-segment active"></div>
@@ -129,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
               <div class="dist-scale">
                 <span>0%</span>
-                <span class="peak">40% PEAK</span>
+                <span class="peak">40% PICO</span>
                 <span>100%</span>
               </div>
             </div>
@@ -144,7 +144,7 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div class="module-body centered">
             <div class="outlet-count">08</div>
-            <div class="outlet-label">PROGRAMMABLE OUTLETS</div>
+            <div class="outlet-label">TOMADAS PROGRAMÁVEIS</div>
             <div class="outlet-visual">
               {[...Array(8)].map(() => (
                 <div class="outlet-dot"></div>
@@ -159,14 +159,14 @@ import Layout from '../layouts/Layout.astro';
             <span class="material-symbols-outlined">sensors</span>
           </div>
           <div class="module-header">
-            <span class="module-title">03_CONNECTIVITY</span>
+            <span class="module-title">03_CONECTIVIDADE</span>
           </div>
           <div class="module-body">
             <div class="conn-grid">
               <div class="conn-card active">
                 <div class="conn-top">
                   <span class="material-symbols-outlined">wifi</span>
-                  <span class="status-badge active">ACTIVE</span>
+                  <span class="status-badge active">ATIVO</span>
                 </div>
                 <h3 class="conn-title">WI-FI 6E</h3>
                 <p class="conn-desc">Dual-band 2.4/5GHz / 802.11ax</p>
@@ -174,10 +174,10 @@ import Layout from '../layouts/Layout.astro';
               <div class="conn-card">
                 <div class="conn-top">
                   <span class="material-symbols-outlined">hub</span>
-                  <span class="status-badge">STANDBY</span>
+                  <span class="status-badge">EM ESPERA</span>
                 </div>
                 <h3 class="conn-title">ZIGBEE 3.0</h3>
-                <p class="conn-desc">Mesh network control</p>
+                <p class="conn-desc">Controle de rede Mesh</p>
               </div>
             </div>
           </div>
@@ -186,15 +186,15 @@ import Layout from '../layouts/Layout.astro';
         {/* Detailed Data Table */}
         <section class="bento-module full-width">
           <div class="module-header">
-            <span class="module-title">PROTOCOL_STACK_OVERVIEW</span>
+            <span class="module-title">VISAO_GERAL_DA_PILHA_DE_PROTOCOLOS</span>
           </div>
           <div class="table-container">
             <table class="tech-table">
               <thead>
                 <tr>
-                  <th>Layer ID</th>
-                  <th>Communication Logic</th>
-                  <th>Operational Status</th>
+                  <th>ID da Camada</th>
+                  <th>Lógica de Comunicação</th>
+                  <th>Status Operacional</th>
                 </tr>
               </thead>
               <tbody>
@@ -218,7 +218,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="warning-box">
         <span class="material-symbols-outlined error-icon">warning</span>
         <div class="warning-content">
-          <div class="timestamp-label">LAST UPDATED</div>
+          <div class="timestamp-label">ÚLTIMA ATUALIZAÇÃO</div>
           <div class="timestamp-value">2025.10.24 14:30:05</div>
         </div>
         <span class="material-symbols-outlined verified-icon">verified</span>

@@ -7,29 +7,29 @@
         <span class="material-symbols-outlined">person</span>
       </div>
       <div class="user-info">
-        <div class="user-name">OPERATOR_01</div>
-        <div class="user-status">V2.04 ACTIVE</div>
+        <div class="user-name">OPERADOR_01</div>
+        <div class="user-status">VERSÃO_V2.0 ATIVO</div>
       </div>
     </div>
-    <button class="diagnostic-btn">Run System Diagnostic</button>
+    <button class="diagnostic-btn">Executar Diagnóstico do Sistema</button>
   </div>
   
   <nav class="sidebar-nav">
     <a class="nav-item active" href="#">
-      <span class="material-symbols-outlined">grid_view</span> DASHBOARD
+      <span class="material-symbols-outlined">grid_view</span> PAINEL DE CONTROLE
     </a>
     <a class="nav-item" href="/instalacao">
       <span class="material-symbols-outlined">menu_book</span> MANUAL
     </a>
     <a class="nav-item" href="/especificacoes">
-      <span class="material-symbols-outlined">analytics</span> DATA
+      <span class="material-symbols-outlined">analytics</span> DADOS
     </a>
   </nav>
 
   <div class="sidebar-footer">
-    <a class="logout-link" href="#">
-      <span class="material-symbols-outlined">power_settings_new</span> Logout
-    </a>
+    <div class="footer-logo">
+      <span class="footer-logo-img" aria-label="Eletromidia"></span>
+    </div>
   </div>
 </aside>
 
@@ -140,21 +140,26 @@
   .sidebar-footer {
     margin-top: auto;
     padding: 24px;
+    border-top: 1px solid var(--border-color);
   }
 
-  .logout-link {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--on-surface-variant);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.2s;
+  .footer-logo-img {
+    height: 32px;
+    width: 150px;
+    display: block;
+    background-color: #ffffff; /* Cor para modo escuro */
+    -webkit-mask-image: url('/logo-eletromidia.svg');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
+    mask-image: url('/logo-eletromidia.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: left center;
+    transition: background-color 0.3s ease;
   }
 
-  .logout-link:hover {
-    color: var(--error);
+  :global(.light) .footer-logo-img {
+    background-color: var(--primary); /* Cor para modo claro */
   }
 </style>

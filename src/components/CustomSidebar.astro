@@ -11,7 +11,7 @@ import DefaultSidebar from '@astrojs/starlight/components/Sidebar.astro';
       </div>
       <div>
         <div class="font-label-caps text-label-caps text-primary m-0 leading-tight">OPERATOR_01</div>
-        <div class="font-label-caps text-[10px] text-on-surface-variant opacity-60 m-0 leading-tight">V2.04 ACTIVE</div>
+        <div class="font-label-caps text-[10px] text-on-surface-variant opacity-60 m-0 leading-tight">VERSÃO_V2.0 ATIVO</div>
       </div>
     </div>
     <button class="w-full py-1 border border-primary text-primary font-label-caps text-[10px] hover:bg-primary/10 transition-all bg-transparent cursor-pointer">
@@ -24,13 +24,32 @@ import DefaultSidebar from '@astrojs/starlight/components/Sidebar.astro';
   </div>
 
   <div class="mt-auto p-6 border-t border-black/10 bg-surface-container-low">
-    <a class="text-on-surface-variant flex items-center gap-4 font-label-caps text-label-caps hover:text-error transition-colors no-underline" href="#">
-      <span class="material-symbols-outlined">power_settings_new</span> LOGOUT
-    </a>
+    <div class="footer-logo">
+      <span class="footer-logo-img" aria-label="Eletromidia"></span>
+    </div>
   </div>
 </aside>
 
 <style is:global>
+  .footer-logo-img {
+    height: 32px;
+    width: 150px;
+    display: block;
+    background-color: #ffffff;
+    -webkit-mask-image: url('/logo-eletromidia.svg');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left center;
+    mask-image: url('/logo-eletromidia.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: left center;
+    transition: background-color 0.3s ease;
+  }
+
+  .light .footer-logo-img {
+    background-color: var(--primary);
+  }
   .custom-starlight-sidebar ul {
     list-style: none;
     padding-left: 0;
