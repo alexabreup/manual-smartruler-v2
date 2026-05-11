@@ -8,8 +8,8 @@ import MobileMenuToggle from '@astrojs/starlight/components/MobileMenuToggle.ast
 <header class="bg-surface border-b border-black/10 w-full top-0 z-50 flex items-center h-16 md:h-20 px-4 md:px-6">
   <div class="flex justify-between items-center w-full max-w-[1280px] mx-auto">
     <div class="flex items-center gap-4">
-      <a href="/" class="font-display-lg text-headline-md font-bold text-primary tracking-tighter no-underline hover:text-primary">
-        SMART RULER ELETROMIDIA
+      <a href="/" class="flex items-center gap-2 text-primary font-bold no-underline uppercase tracking-tight">
+        SMART RULER
       </a>
     </div>
     
@@ -22,9 +22,7 @@ import MobileMenuToggle from '@astrojs/starlight/components/MobileMenuToggle.ast
         <Search {...Astro.props} />
       </div>
       <div class="flex gap-2 text-primary items-center">
-        <button class="hover:bg-surface-variant/30 p-1 transition-colors active:scale-95 duration-75 text-primary cursor-pointer border-none bg-transparent flex items-center justify-center">
-          <span class="material-symbols-outlined">terminal</span>
-        </button>
+
         <div class="hidden md:block">
            <ThemeSelect {...Astro.props} />
         </div>

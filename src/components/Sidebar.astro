@@ -1,4 +1,5 @@
 ---
+const currentPath = Astro.url.pathname;
 ---
 <aside class="sidebar">
   <div class="sidebar-header">
@@ -15,13 +16,13 @@
   </div>
   
   <nav class="sidebar-nav">
-    <a class="nav-item active" href="#">
+    <a class={`nav-item ${currentPath === '/' ? 'active' : ''}`} href="/">
       <span class="material-symbols-outlined">grid_view</span> PAINEL DE CONTROLE
     </a>
-    <a class="nav-item" href="/instalacao">
+    <a class={`nav-item ${currentPath === '/instalacao' || currentPath.startsWith('/instalacao/') ? 'active' : ''}`} href="/instalacao">
       <span class="material-symbols-outlined">menu_book</span> MANUAL
     </a>
-    <a class="nav-item" href="/especificacoes">
+    <a class={`nav-item ${currentPath === '/especificacoes' || currentPath.startsWith('/especificacoes/') ? 'active' : ''}`} href="/especificacoes">
       <span class="material-symbols-outlined">analytics</span> DADOS
     </a>
   </nav>

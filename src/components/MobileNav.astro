@@ -4,7 +4,7 @@ const currentPath = Astro.url.pathname;
 <nav class="mobile-nav">
   <a href="/" class={`nav-btn ${currentPath === '/' ? 'active' : ''}`}>
     <span class="material-symbols-outlined icon">grid_view</span>
-    <span class="label">Painel</span>
+    <span class="label">PAINEL</span>
   </a>
   
   <a href="/instalacao" class={`nav-btn ${currentPath === '/instalacao' ? 'active' : ''}`}>
@@ -17,10 +17,7 @@ const currentPath = Astro.url.pathname;
     <span class="label">Técnico</span>
   </a>
 
-  <button class="nav-btn" id="mobile-menu-trigger">
-    <span class="material-symbols-outlined icon">settings</span>
-    <span class="label">Sistema</span>
-  </button>
+
 </nav>
 
 <style>

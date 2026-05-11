@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="SmartRuler OS | Especificações">
-	<div class="page-container">
+  <div class="page-container">
     <div class="content-wrapper">
       {/* Page Header */}
       <div class="page-header">
@@ -24,15 +24,15 @@ import Layout from '../layouts/Layout.astro';
           <div class="card-specs">
             <div class="spec-row">
               <span class="spec-label">Chipset</span>
-              <span class="spec-value">ALX-32 ULTRA</span>
+              <span class="spec-value">Xtensa LX6 dual-core de 32 bits</span>
             </div>
             <div class="spec-row">
               <span class="spec-label">Velocidade do Clock</span>
-              <span class="spec-value">240MHZ DUAL-CORE</span>
+              <span class="spec-value">80 MHz a 240 MHz</span>
             </div>
             <div class="spec-row last">
               <span class="spec-label">Memória</span>
-              <span class="spec-value">520KB SRAM</span>
+              <span class="spec-value">4 MB</span>
             </div>
           </div>
           <div class="scanning-line"></div>
@@ -48,17 +48,9 @@ import Layout from '../layouts/Layout.astro';
             <h3 class="card-title">Conectividade</h3>
           </div>
           <div class="card-specs">
-            <div class="spec-row">
-              <span class="spec-label">Protocol</span>
-              <span class="spec-value">802.11 B/G/N</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-label">Bluetooth</span>
-              <span class="spec-value">V4.2 BR/EDR</span>
-            </div>
             <div class="spec-row last">
-              <span class="spec-label">Antena</span>
-              <span class="spec-value">PCB INTERNA</span>
+              <span class="spec-label">Tipo</span>
+              <span class="spec-value">Conexão cabeada Ethernet RJ45</span>
             </div>
           </div>
           <div class="scanning-line"></div>
@@ -80,11 +72,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
             <div class="phys-item">
               <span class="phys-label">Peso</span>
-              <span class="phys-value">145g</span>
+              <span class="phys-value">650g</span>
             </div>
             <div class="phys-item">
               <span class="phys-label">Carcaça</span>
-              <span class="phys-value">Policarbonato</span>
+              <span class="phys-value">Aço Carbono</span>
             </div>
           </div>
         </div>
@@ -110,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
               <div class="spec-line primary-line">
                 <span class="label">CORRENTE MÁXIMA</span>
-                <span class="value">16A TOTAL</span>
+                <span class="value">10A TOTAL</span>
               </div>
             </div>
             <div class="load-dist">
@@ -120,16 +112,16 @@ import Layout from '../layouts/Layout.astro';
                 <div class="dist-segment active"></div>
                 <div class="dist-segment active"></div>
                 <div class="dist-segment active"></div>
-                <div class="dist-segment"></div>
-                <div class="dist-segment"></div>
-                <div class="dist-segment"></div>
-                <div class="dist-segment"></div>
-                <div class="dist-segment"></div>
-                <div class="dist-segment"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
+                <div class="dist-segment active"></div>
               </div>
               <div class="dist-scale">
                 <span>0%</span>
-                <span class="peak">40% PICO</span>
+                <span class="peak">100% DISPONIBILIDADE</span>
                 <span>100%</span>
               </div>
             </div>
@@ -143,12 +135,10 @@ import Layout from '../layouts/Layout.astro';
             <span class="material-symbols-outlined icon-small">bolt</span>
           </div>
           <div class="module-body centered">
-            <div class="outlet-count">08</div>
+            <div class="outlet-count">03</div>
             <div class="outlet-label">TOMADAS PROGRAMÁVEIS</div>
             <div class="outlet-visual">
-              {[...Array(8)].map(() => (
-                <div class="outlet-dot"></div>
-              ))}
+              {[...Array(8)].map(() => <div class="outlet-dot" />)}
             </div>
           </div>
         </section>
@@ -165,19 +155,13 @@ import Layout from '../layouts/Layout.astro';
             <div class="conn-grid">
               <div class="conn-card active">
                 <div class="conn-top">
-                  <span class="material-symbols-outlined">wifi</span>
+                  <span class="material-symbols-outlined"
+                    >settings_ethernet</span
+                  >
                   <span class="status-badge active">ATIVO</span>
                 </div>
-                <h3 class="conn-title">WI-FI 6E</h3>
-                <p class="conn-desc">Dual-band 2.4/5GHz / 802.11ax</p>
-              </div>
-              <div class="conn-card">
-                <div class="conn-top">
-                  <span class="material-symbols-outlined">hub</span>
-                  <span class="status-badge">EM ESPERA</span>
-                </div>
-                <h3 class="conn-title">ZIGBEE 3.0</h3>
-                <p class="conn-desc">Controle de rede Mesh</p>
+                <h3 class="conn-title">ETHERNET RJ45</h3>
+                <p class="conn-desc">Conexão física estável 10/100 Mbps</p>
               </div>
             </div>
           </div>
@@ -200,13 +184,21 @@ import Layout from '../layouts/Layout.astro';
               <tbody>
                 <tr>
                   <td class="primary-text">L1_PHYSICAL</td>
-                  <td>IEEE 802.11 / 802.15.4</td>
-                  <td><div class="status-pill"><div class="dot glow"></div> NOMINAL</div></td>
+                  <td>Ethernet / IEEE 802.3</td>
+                  <td
+                    ><div class="status-pill">
+                      <div class="dot glow"></div> NOMINAL
+                    </div></td
+                  >
                 </tr>
                 <tr>
                   <td class="primary-text">L2_TRANSPORT</td>
                   <td>UDP / TCP (Thread Support)</td>
-                  <td><div class="status-pill"><div class="dot glow"></div> NOMINAL</div></td>
+                  <td
+                    ><div class="status-pill">
+                      <div class="dot glow"></div> NOMINAL
+                    </div></td
+                  >
                 </tr>
               </tbody>
             </table>
@@ -402,10 +394,18 @@ import Layout from '../layouts/Layout.astro';
     .bento-grid {
       grid-template-columns: repeat(12, 1fr);
     }
-    .bento-module.large { grid-column: span 8; }
-    .bento-module.small { grid-column: span 4; }
-    .bento-module.medium { grid-column: span 6; }
-    .bento-module.full-width { grid-column: span 12; }
+    .bento-module.large {
+      grid-column: span 8;
+    }
+    .bento-module.small {
+      grid-column: span 4;
+    }
+    .bento-module.medium {
+      grid-column: span 6;
+    }
+    .bento-module.full-width {
+      grid-column: span 12;
+    }
   }
 
   .bento-module {
@@ -714,8 +714,14 @@ import Layout from '../layouts/Layout.astro';
     gap: 16px;
   }
 
-  .error-icon { color: var(--error); }
-  .verified-icon { color: var(--primary); font-size: 32px; margin-left: auto; }
+  .error-icon {
+    color: var(--error);
+  }
+  .verified-icon {
+    color: var(--primary);
+    font-size: 32px;
+    margin-left: auto;
+  }
 
   .timestamp-label {
     font-family: var(--font-mono);
