@@ -18,22 +18,56 @@ import Footer from '../components/Footer.astro';
     <!-- Main Content Area -->
     <div class="grid grid-cols-1 md-grid-cols-2 gap-6 items-start" id="interactive-content-wrapper">
       
-      <!-- Three.js Canvas -->
-      <div class="canvas-container sharp-border border border-outline-variant" id="threejs-container">
-        <div class="absolute top-4 left-4 z-10">
-          <div class="flex items-center gap-2 text-10px text-primary font-bold font-mono">
-            <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-            VISUALIZAÇÃO EM TEMPO REAL
+      <!-- Three.js Canvas & Mobile Steps Wrapper -->
+      <div class="canvas-container flex flex-row sharp-border border border-outline-variant" id="threejs-container">
+        
+        <!-- 3D Area -->
+        <div class="flex-grow relative h-full w-full overflow-hidden" style="min-width: 0;">
+          <div class="absolute top-4 left-4 z-10">
+            <div class="flex items-center gap-2 text-10px text-primary font-bold font-mono">
+              <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+              VISUALIZAÇÃO EM TEMPO REAL
+            </div>
           </div>
+          <div class="absolute bottom-4 left-4 z-10 text-10px text-on-surface-variant font-mono desktop-steps-container">
+            COORD: 23.5505° S, 46.6333° W
+          </div>
+          <SmartRulerInstallScene client:load />
         </div>
-        <div class="absolute bottom-4 right-4 z-10 text-10px text-on-surface-variant font-mono">
-          COORD: 23.5505° S, 46.6333° W
-        </div>
-        <SmartRulerInstallScene client:load />
+
+        <!-- Mobile Step Menu (Sidebar layout) -->
+        <nav class="w-[115px] flex flex-col gap-1 z-20 overflow-y-visible no-scrollbar mobile-steps-container" data-purpose="step-navigation" style="flex-shrink: 0; align-self: center;">
+          <button class="step-btn-mobile active flex flex-col text-left transition-transform" onclick="updateStep(1)">
+            <span class="number-box">01</span>
+            <span class="step-text">CABO DE<br/>ALIMENTAÇÃO</span>
+          </button>
+          
+          <button class="step-btn-mobile flex flex-col text-left transition-transform" onclick="updateStep(2)">
+            <span class="number-box">02</span>
+            <span class="step-text">ALIMENTAÇÃO<br/>MODEM</span>
+          </button>
+          
+          <button class="step-btn-mobile flex flex-col text-left transition-transform" onclick="updateStep(3)">
+            <span class="number-box">03</span>
+            <span class="step-text">CONEXÃO<br/>PC NUC</span>
+          </button>
+          
+          <button class="step-btn-mobile flex flex-col text-left transition-transform" onclick="updateStep(4)">
+            <span class="number-box">04</span>
+            <span class="step-text">CABO<br/>ETHERNET</span>
+          </button>
+
+          <!-- Interaction Prompt (Scroll down) -->
+          <div class="chevron-wrapper" style="background-color: #ED712E; padding-bottom: 6px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), 50% 100%, 0 calc(100% - 15px)); margin-top: 2px; cursor: pointer;" onclick="document.querySelector('.manual-content').scrollIntoView({ behavior: 'smooth' });">
+            <div class="chevron-inner flex flex-col items-center justify-center" style="background-color: #111318; padding: 8px 4px 16px 4px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), 50% 100%, 0 calc(100% - 15px));">
+              <span style="font-size: 9px; color: #FFFFFF;" class="font-bold text-center leading-tight uppercase font-display">CONTINUE<br/>ROLANDO<br/>ABAIXO</span>
+            </div>
+          </div>
+        </nav>
       </div>
 
-      <!-- Installation Steps -->
-      <div class="bg-surface-container-low p-4 sharp-border border border-outline-variant h-full">
+      <!-- Installation Steps (Desktop Only) -->
+      <div class="bg-surface-container-low p-4 sharp-border border border-outline-variant h-full desktop-steps-container">
         <h2 class="text-xs font-bold text-on-surface-variant mb-4 uppercase tracking-widest font-mono">PROTOCOLO DE INSTALAÇÃO</h2>
         
         <div class="flex flex-col gap-2">
@@ -326,6 +360,15 @@ import Footer from '../components/Footer.astro';
       }
     });
     
+    const mobileButtons = document.querySelectorAll('.step-btn-mobile');
+    mobileButtons.forEach((btn, idx) => {
+      if(idx === stepIndex - 1) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
     // Dispatch custom event so the React Three.js component can pick it up
     window.dispatchEvent(new CustomEvent('smartruler:step', { detail: { step: stepIndex } }));
   }
@@ -440,8 +483,21 @@ import Footer from '../components/Footer.astro';
   .mt-8 { margin-top: 2rem; }
   .mb-4 { margin-bottom: 1rem; }
   
+  .mobile-steps-container { display: flex; }
+  .desktop-steps-container { display: none; }
+
+  @media (max-width: 767px) {
+    .canvas-container {
+      background: #fff8f6 !important;
+      height: 420px !important;
+      border: none !important;
+    }
+  }
+
   @media (min-width: 768px) {
     .md-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mobile-steps-container { display: none; }
+    .desktop-steps-container { display: block; }
   }
 
   /* Color Mappings to System Design CSS Variables */
@@ -464,7 +520,7 @@ import Footer from '../components/Footer.astro';
     height: 535px; 
     width: 100%; 
     position: relative; 
-    background: radial-gradient(circle at center, var(--surface-bright) 0%, var(--surface-container-low) 100%); 
+    background: var(--surface-container-low) !important;
   }
   
   .step-btn { 
@@ -488,6 +544,66 @@ import Footer from '../components/Footer.astro';
   
   .group-active-text-primary {
     color: var(--primary);
+  }
+
+  /* Mobile Button Utils */
+  .w-32 { width: 8rem; }
+  .pr-4 { padding-right: 1rem; }
+  .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+  .flex-row { flex-direction: row; }
+  .flex-grow { flex-grow: 1; }
+  .overflow-hidden { overflow: hidden; }
+  .overflow-y-auto { overflow-y: auto; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .leading-none { line-height: 1; }
+  .leading-tight { line-height: 1.25; }
+  .my-1 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+  
+  .step-btn-mobile {
+    position: relative;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: #8E8E8E;
+    color: #111318;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    font-family: inherit;
+    width: 100%;
+  }
+  .step-btn-mobile:active {
+    transform: scale(0.98);
+  }
+  .step-btn-mobile .number-box {
+    background-color: #B5B5B5;
+    color: #111318;
+    font-size: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    padding: 2px 8px;
+    line-height: 1;
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .step-btn-mobile .step-text {
+    display: block;
+    padding: 4px 6px 6px 6px;
+    font-size: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  
+  .step-btn-mobile.active {
+    background-color: #ED712E;
+  }
+  .step-btn-mobile.active .number-box {
+    background-color: #111318;
+    color: #FFFFFF;
+  }
+  .step-btn-mobile.active .step-text {
+    color: #111318;
   }
 
   .status-badge { 

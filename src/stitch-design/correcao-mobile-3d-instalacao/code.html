@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Smart Ruler 3D - Módulo Interativo</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts for Technical look -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'tech-orange': '#ED712E',
+            'tech-dark': '#111318',
+            'tech-bg': '#fff8f6',
+            'tech-grey': '#A0A0A0',
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains+Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+<style data-purpose="custom-typography">
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      text-transform: uppercase;
+      background-color: #fff8f6;
+    }
+    .technical-label {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+  </style>
+<style data-purpose="ui-elements">
+    /* Custom clip-path for the "Continue Rolando" chevron shape */
+    .chevron-container {
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    }
+    /* Step block active shadow */
+    .active-step {
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    }
+    /* Fixed height for device container to ensure layout stability */
+    .device-viewport {
+      height: calc(100vh - 180px);
+    }
+  </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden text-tech-dark select-none">
+<!-- BEGIN: Header -->
+<header class="pt-4 px-4 pb-2 border-b border-orange-100 bg-white z-10">
+<div class="flex justify-between items-start mb-1">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-tech-orange leading-none mb-1">MÓDULO INTERATIVO</span>
+<h1 class="text-2xl font-bold tracking-tight text-tech-orange leading-none">SMART RULER</h1>
+</div>
+<div class="p-1 px-2 border border-tech-grey/30 rounded text-[9px] font-mono text-tech-grey mt-1">
+        SISTEMA_V2.04_READY
+      </div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tech-orange animate-pulse"></span>
+<span class="text-[10px] font-mono tracking-widest text-tech-grey">VISUALIZAÇÃO EM TEMPO REAL</span>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-grow relative flex overflow-hidden">
+<!-- BEGIN: 3D/Image Viewport -->
+<section class="flex-grow flex items-center justify-center p-4 relative" data-purpose="device-viewer">
+<!-- Background Grid/Pattern -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Device Image - Using provided reference -->
+<div class="relative z-0 max-h-full">
+<img alt="Smart Ruler Device" class="object-contain h-[70vh] drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/ADBb0uhObXGPI7RVMP-D32WLQ7PGW4dzHHPK1rNE-kdT1MQWxnAq2Hq8EMl01eC_BmBUzhxr_mqZz5S8NEl9LA_QM9ZOiQPu2yFc04KIR2IEQelYCbOCBNY_sHE3q59vdjzvbExfKDCSAWXgjpMRJEsWl8Gz12sgH60Na-eYAn6or41lqbg8Nnc-l2UgGC5ox39HIRjBj8z7AWJ94QDy_f1wghDRPThC_Kg65lTUZDF_Uw9zSoA4xiUPU8ZBgo2GG7zEandpUGaS8IShbA"/>
+</div>
+</section>
+<!-- END: 3D/Image Viewport -->
+<!-- BEGIN: Sidebar Step Menu -->
+<nav class="w-32 pr-4 py-8 flex flex-col gap-3 z-20 overflow-y-auto no-scrollbar" data-purpose="step-navigation">
+<!-- Step 01 - Active -->
+<button class="flex flex-col bg-tech-orange text-white p-2 rounded-sm active-step text-left transition-transform active:scale-95">
+<span class="text-2xl font-mono font-bold leading-none">01</span>
+<div class="w-full h-[2px] bg-white/30 my-1"></div>
+<span class="text-[9px] font-bold leading-tight">CABO DE ALIMENTAÇÃO</span>
+</button>
+<!-- Step 02 -->
+<button class="flex flex-col bg-[#C4C4C4] text-tech-dark p-2 rounded-sm text-left opacity-80 hover:opacity-100 transition-opacity">
+<span class="text-2xl font-mono font-bold leading-none">02</span>
+<div class="w-full h-[2px] bg-black/10 my-1"></div>
+<span class="text-[9px] font-bold leading-tight">ALIMENTAÇÃO MODEM</span>
+</button>
+<!-- Step 03 -->
+<button class="flex flex-col bg-[#C4C4C4] text-tech-dark p-2 rounded-sm text-left opacity-80 hover:opacity-100 transition-opacity">
+<span class="text-2xl font-mono font-bold leading-none">03</span>
+<div class="w-full h-[2px] bg-black/10 my-1"></div>
+<span class="text-[9px] font-bold leading-tight">CONEXÃO PC NUC</span>
+</button>
+<!-- Step 04 -->
+<button class="flex flex-col bg-[#C4C4C4] text-tech-dark p-2 rounded-sm text-left opacity-80 hover:opacity-100 transition-opacity">
+<span class="text-2xl font-mono font-bold leading-none">04</span>
+<div class="w-full h-[2px] bg-black/10 my-1"></div>
+<span class="text-[9px] font-bold leading-tight">CABO ETHERNET</span>
+</button>
+<!-- Interaction Prompt -->
+<div class="mt-2 bg-tech-dark text-white p-2 chevron-container flex flex-col items-center justify-center pb-4">
+<span class="text-[8px] font-bold text-center leading-tight">CONTINUE ROLANDO ABAIXO</span>
+<svg class="h-4 w-4 mt-1 text-tech-orange animate-bounce" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+</svg>
+</div>
+</nav>
+<!-- END: Sidebar Step Menu -->
+</main>
+<!-- END: Main Content Area -->
+<!-- BEGIN: Bottom Navigation -->
+<footer class="h-16 bg-white border-t border-orange-100 flex items-center justify-around px-4 z-30" data-purpose="main-navigation">
+<!-- Dashboard Icon -->
+<button class="flex flex-col items-center justify-center text-tech-grey">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Manual Icon (Active) -->
+<button class="flex flex-col items-center justify-center text-tech-orange relative">
+<div class="absolute -top-1 w-8 h-1 bg-tech-orange rounded-full"></div>
+<svg class="h-7 w-7" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Data/Stats Icon -->
+<button class="flex flex-col items-center justify-center text-tech-grey">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</footer>
+<!-- END: Bottom Navigation -->
+<!-- BEGIN: Logic Scripts -->
+<script data-purpose="ui-interactivity">
+    // Simple mock logic for button selection
+    const buttons = document.querySelectorAll('nav button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Reset all buttons
+        buttons.forEach(b => {
+          b.classList.remove('bg-tech-orange', 'text-white', 'active-step');
+          b.classList.add('bg-[#C4C4C4]', 'text-tech-dark', 'opacity-80');
+          // Update separator color
+          const separator = b.querySelector('div');
+          if (separator) separator.classList.replace('bg-white/30', 'bg-black/10');
+        });
+        
+        // Activate clicked button
+        btn.classList.remove('bg-[#C4C4C4]', 'text-tech-dark', 'opacity-80');
+        btn.classList.add('bg-tech-orange', 'text-white', 'active-step');
+        const separator = btn.querySelector('div');
+        if (separator) separator.classList.replace('bg-black/10', 'bg-white/30');
+      });
+    });
+  </script>
+<!-- END: Logic Scripts -->
+</body></html>

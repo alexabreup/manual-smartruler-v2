@@ -11,6 +11,15 @@ import {
 } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Temporarily intercept console.warn to suppress known three.js/fiber warnings
+const originalWarn = console.warn;
+console.warn = (...args) => {
+  const msg = args.join(' ');
+  if (msg.includes('THREE.Clock: This module has been deprecated')) return;
+  if (msg.includes('cannot be represented accurately in double precision')) return;
+  originalWarn(...args);
+};
+
 function LoadingScreen() {
   const { progress } = useProgress();
 
