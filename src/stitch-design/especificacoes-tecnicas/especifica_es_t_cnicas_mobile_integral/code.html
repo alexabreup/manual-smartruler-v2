@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdbcc",
+                    "tertiary-container": "#00a0d9",
+                    "on-primary-container": "#521d00",
+                    "on-secondary-container": "#636262",
+                    "surface": "#fff8f6",
+                    "primary-container": "#ed712e",
+                    "background": "#fff8f6",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#dfc0b3",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#a14000",
+                    "on-primary-fixed-variant": "#7b2f00",
+                    "tertiary-fixed-dim": "#7ed0ff",
+                    "surface-container-high": "#fae4db",
+                    "outline": "#8b7267",
+                    "on-tertiary-fixed-variant": "#004c6a",
+                    "on-secondary-fixed-variant": "#474746",
+                    "secondary": "#5f5e5e",
+                    "tertiary-fixed": "#c5e7ff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#a14000",
+                    "surface-container-highest": "#f4ded5",
+                    "on-primary-fixed": "#351000",
+                    "on-surface-variant": "#574238",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#3b2e28",
+                    "on-tertiary-fixed": "#001e2d",
+                    "secondary-container": "#e2dfde",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#fff8f6",
+                    "surface-container": "#ffeae1",
+                    "inverse-on-surface": "#ffede6",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#ebd6cd",
+                    "inverse-primary": "#ffb694",
+                    "surface-container-low": "#fff1ec",
+                    "tertiary": "#00658b",
+                    "on-tertiary-container": "#003247",
+                    "primary-fixed-dim": "#ffb694",
+                    "on-surface": "#241914",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-background": "#241914",
+                    "surface-variant": "#f4ded5",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xl": "48px",
+                    "gutter": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "grid_columns": "12",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "mono-label": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "display-lg": ["Space Grotesk"],
+                    "body-base": ["Space Grotesk"],
+                    "numeric-data": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "mono-label": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-base": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "numeric-data": ["18px", {"lineHeight": "1.0", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .chamfer-tr { clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+        .chamfer-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px)); }
+        .brutalist-shadow { box-shadow: 4px 4px 0px 0px #000000; }
+        .segmented-progress span { height: 8px; width: 100%; display: block; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-base antialiased p-0 m-0">
+<!-- Top Navigation (Mobile Bottom Bar) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant z-50 md:hidden flex justify-around items-center py-md px-lg">
+<div class="flex flex-col items-center gap-xs text-primary">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-mono-label text-[10px]">TECH SPEC</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-mono-label text-[10px]">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-mono-label text-[10px]">MANUAL</span>
+</div>
+<div class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-mono-label text-[10px]">DATA</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-screen-md mx-auto px-lg pb-32 pt-lg">
+<!-- Header Section -->
+<header class="mb-xl border-b-2 border-primary pb-md relative">
+<div class="absolute -top-2 -left-2 text-primary">
+<span class="material-symbols-outlined text-sm">add</span>
+</div>
+<div class="mb-xs flex items-center gap-sm">
+<span class="bg-primary px-xs py-0.5 text-[10px] text-white font-mono-label">VERSION CONTROL</span>
+<span class="font-mono-label text-primary">OPERATOR_01 / V2.04 ACTIVE</span>
+</div>
+<h1 class="font-display-lg text-headline-md font-bold text-primary tracking-tighter uppercase leading-none">
+                ESPECIFICAÇÕES TÉCNICAS <br/> <span class="text-on-surface">SMR v1.9.9.1</span>
+</h1>
+</header>
+<!-- 1. ARQUITETURA DE HARDWARE -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 bg-on-background flex items-center justify-center chamfer-tr">
+<span class="text-white text-body-base font-bold">01</span>
+</div>
+<h2 class="font-headline-md text-headline-md uppercase">ARQUITETURA DE HARDWARE</h2>
+</div>
+<div class="border border-on-background p-md bg-white mb-md">
+<div class="bg-on-background text-white px-sm py-xs mb-md inline-block font-mono-label text-[10px]">LOGIC PROTOCOL</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-sm bg-surface-container border-l-4 border-primary">
+<span class="block font-mono-label text-[10px] text-secondary">LOW (0)</span>
+<span class="font-numeric-data font-bold">ON / ACTIVE</span>
+</div>
+<div class="p-sm bg-secondary-fixed border-l-4 border-secondary">
+<span class="block font-mono-label text-[10px] text-secondary">HIGH (1)</span>
+<span class="font-numeric-data font-bold">OFF / RESET</span>
+</div>
+</div>
+</div>
+<div class="border border-on-background p-md bg-white">
+<div class="font-mono-label text-[10px] text-on-surface-variant mb-sm">GPIO MAPPING TABLE</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-xs border-b border-outline-variant">
+<span class="font-bold text-primary">RELÉ K1</span>
+<span class="font-numeric-data px-sm bg-surface-dim border border-on-background">GPIO 14</span>
+</div>
+<div class="flex justify-between items-center py-xs border-b border-outline-variant">
+<span class="font-bold text-primary">RELÉ K2</span>
+<span class="font-numeric-data px-sm bg-surface-dim border border-on-background">GPIO 32</span>
+</div>
+<div class="flex justify-between items-center py-xs border-b border-outline-variant">
+<span class="font-bold text-primary">RELÉ K3</span>
+<span class="font-numeric-data px-sm bg-surface-dim border border-on-background">GPIO 12</span>
+</div>
+<div class="flex justify-between items-center py-xs">
+<span class="font-bold text-primary">RELÉ K4</span>
+<span class="font-numeric-data px-sm bg-surface-dim border border-on-background">GPIO 33</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. MONITORAMENTO DE CONECTIVIDADE -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 bg-on-background flex items-center justify-center chamfer-tr">
+<span class="text-white text-body-base font-bold">02</span>
+</div>
+<h2 class="font-headline-md text-headline-md uppercase">CONECTIVIDADE</h2>
+</div>
+<!-- Modem Monitoring -->
+<div class="border-2 border-on-background p-md bg-white mb-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-xs opacity-10">
+<span class="material-symbols-outlined text-4xl">router</span>
+</div>
+<h3 class="font-mono-label text-primary mb-sm">SECTION A (MODEM)</h3>
+<p class="text-sm mb-md leading-relaxed">
+                    Ping logic automated watchdog. System performs periodic network health checks.
+                </p>
+<div class="flex items-center gap-md">
+<div class="flex-1">
+<span class="block font-mono-label text-[10px] text-on-surface-variant">AUTO-RESET PULSE</span>
+<div class="flex gap-xs mt-xs">
+<div class="w-full bg-primary h-2"></div>
+<div class="w-4 bg-outline-variant h-2"></div>
+<div class="w-4 bg-outline-variant h-2"></div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-headline-md font-bold">5s</span>
+<span class="block font-mono-label text-[10px]">DURATION</span>
+</div>
+</div>
+</div>
+<!-- PC Monitoring -->
+<div class="border border-on-background p-md bg-white">
+<h3 class="font-mono-label text-primary mb-sm">SECTION B (LOCAL PC)</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="border border-outline p-xs">
+<span class="material-symbols-outlined text-sm mb-xs">search</span>
+<span class="block font-mono-label text-[10px]">DISCOVERY</span>
+</div>
+<div class="border border-outline p-xs">
+<span class="material-symbols-outlined text-sm mb-xs">verified_user</span>
+<span class="block font-mono-label text-[10px]">ID VERIFY</span>
+</div>
+<div class="border border-outline p-xs">
+<span class="material-symbols-outlined text-sm mb-xs">fingerprint</span>
+<span class="block font-mono-label text-[10px]">VALIDATION</span>
+</div>
+<div class="border border-outline p-xs">
+<span class="material-symbols-outlined text-sm mb-xs">visibility</span>
+<span class="block font-mono-label text-[10px]">WATCHDOG</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PROTOCOLO DE COMUNICAÇÃO -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 bg-on-background flex items-center justify-center chamfer-tr">
+<span class="text-white text-body-base font-bold">03</span>
+</div>
+<h2 class="font-headline-md text-headline-md uppercase">PROTOCOLO BINÁRIO</h2>
+</div>
+<div class="bg-surface-container border border-on-background p-md">
+<div class="flex items-center justify-between mb-md">
+<span class="font-mono-label text-[10px] text-on-surface">MAPPING: MODEM / PC / K3 / K4</span>
+<span class="material-symbols-outlined text-primary">data_object</span>
+</div>
+<div class="font-numeric-data text-headline-md font-bold tracking-[0.2em] text-center bg-white border border-outline p-sm mb-md">
+                    0101 <span class="text-primary">1100</span>
+</div>
+<p class="text-xs text-on-surface-variant font-mono-label">
+                    HEX: 0x5C | Binary mapping reflects real-time status of critical internal relays and connectivity nodes.
+                </p>
+</div>
+</section>
+<!-- 4. WATCHDOG DE SISTEMA -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 bg-on-background flex items-center justify-center chamfer-tr">
+<span class="text-white text-body-base font-bold">04</span>
+</div>
+<h2 class="font-headline-md text-headline-md uppercase">WATCHDOG (WDT)</h2>
+</div>
+<div class="relative bg-white border border-on-background p-md brutalist-shadow">
+<div class="flex items-end justify-between mb-md">
+<div>
+<span class="block font-mono-label text-[10px] text-on-surface-variant">HEARTBEAT TIMEOUT</span>
+<span class="font-display-lg text-primary text-headline-md leading-none">45 SEC</span>
+</div>
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">timer_3</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 bg-primary"></span>
+<span class="font-mono-label text-[10px] uppercase">TASK MONITORING ACTIVE</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 bg-primary"></span>
+<span class="font-mono-label text-[10px] uppercase">HARDWARE REBOOT ON FAIL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. COMANDOS ACEITOS -->
+<section class="mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 bg-on-background flex items-center justify-center chamfer-tr">
+<span class="text-white text-body-base font-bold">05</span>
+</div>
+<h2 class="font-headline-md text-headline-md uppercase">COMANDOS (SERVIDOR)</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-on-background text-white font-mono-label text-[10px]">
+<th class="p-sm text-left border border-white/10">CMD</th>
+<th class="p-sm text-left border border-white/10">TARGET</th>
+<th class="p-sm text-left border border-white/10">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-mono-label text-[11px]">
+<tr class="border-b border-outline-variant">
+<td class="p-sm font-bold text-primary">0x01</td>
+<td class="p-sm">K1 (POWER)</td>
+<td class="p-sm">TOGGLE 5S</td>
+</tr>
+<tr class="border-b border-outline-variant bg-surface-container-low">
+<td class="p-sm font-bold text-primary">0x02</td>
+<td class="p-sm">K2 (MODEM)</td>
+<td class="p-sm">RESET SEQ</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="p-sm font-bold text-primary">0x03</td>
+<td class="p-sm">K3 (AUX_1)</td>
+<td class="p-sm">FORCE HIGH</td>
+</tr>
+<tr class="border-b border-outline-variant bg-surface-container-low">
+<td class="p-sm font-bold text-primary">0x04</td>
+<td class="p-sm">K4 (AUX_2)</td>
+<td class="p-sm">FORCE LOW</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Technical Footer -->
+<footer class="mt-xl text-center">
+<div class="flex justify-center gap-lg mb-md">
+<div class="text-primary opacity-20"><span class="material-symbols-outlined text-4xl">precision_manufacturing</span></div>
+<div class="text-primary opacity-20"><span class="material-symbols-outlined text-4xl">settings_ethernet</span></div>
+<div class="text-primary opacity-20"><span class="material-symbols-outlined text-4xl">memory</span></div>
+</div>
+<p class="font-mono-label text-[10px] text-on-surface-variant uppercase tracking-widest">
+                System Integrated - SMR OS Technical Documentation © 2024
+            </p>
+</footer>
+</main>
+<!-- Visual Deco Elements -->
+<div class="fixed top-4 right-4 pointer-events-none opacity-30 hidden md:block">
+<div class="font-mono-label text-[10px] border border-primary p-xs chamfer-bl">
+            SYS_REF: 099-B
+        </div>
+</div>
+<!-- Floating Action Button - Diagnostic -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary-container text-white brutalist-shadow chamfer-tr flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+</body></html>

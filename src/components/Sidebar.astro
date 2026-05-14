@@ -1,28 +1,22 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
+
 <aside class="sidebar">
-  <div class="sidebar-header">
-    <div class="user-profile">
-      <div class="user-avatar">
-        <span class="material-symbols-outlined">person</span>
-      </div>
-      <div class="user-info">
-        <div class="user-name">OPERADOR_01</div>
-        <div class="user-status">VERSÃO_V2.06 ATIVO</div>
-      </div>
-    </div>
-    <button class="diagnostic-btn">Executar Diagnóstico do Sistema</button>
-  </div>
-  
   <nav class="sidebar-nav">
-    <a class={`nav-item ${currentPath === '/' ? 'active' : ''}`} href="/">
+    <a class={`nav-item ${currentPath === "/" ? "active" : ""}`} href="/">
       <span class="material-symbols-outlined">grid_view</span> PAINEL DE CONTROLE
     </a>
-    <a class={`nav-item ${currentPath === '/instalacao' || currentPath.startsWith('/instalacao/') ? 'active' : ''}`} href="/instalacao">
+    <a
+      class={`nav-item ${currentPath === "/instalacao" || currentPath.startsWith("/instalacao/") ? "active" : ""}`}
+      href="/instalacao"
+    >
       <span class="material-symbols-outlined">menu_book</span> MANUAL
     </a>
-    <a class={`nav-item ${currentPath === '/especificacoes' || currentPath.startsWith('/especificacoes/') ? 'active' : ''}`} href="/especificacoes">
+    <a
+      class={`nav-item ${currentPath === "/especificacoes" || currentPath.startsWith("/especificacoes/") ? "active" : ""}`}
+      href="/especificacoes"
+    >
       <span class="material-symbols-outlined">analytics</span> DADOS
     </a>
   </nav>
@@ -32,8 +26,9 @@ const currentPath = Astro.url.pathname;
       <span class="footer-logo-img" aria-label="Eletromidia"></span>
     </div>
     <div class="footer-credits">
-      <p>Produzido por <strong>Alexandre de Abreu Pereira</strong></p>
-      <a href="mailto:alexandre.abreu@eletromidia.com.br" class="credit-link">alexandre.abreu@eletromidia.com.br</a>
+      <a href="mailto:alexandre.abreu@eletromidia.com.br" class="credit-link"
+        >alexandre.abreu@eletromidia.com.br</a
+      >
     </div>
   </div>
 </aside>
@@ -153,11 +148,11 @@ const currentPath = Astro.url.pathname;
     width: 150px;
     display: block;
     background-color: #ffffff; /* Cor para modo escuro */
-    -webkit-mask-image: url('/logo-eletromidia.svg');
+    -webkit-mask-image: url("/logo-eletromidia.svg");
     -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: left center;
-    mask-image: url('/logo-eletromidia.svg');
+    mask-image: url("/logo-eletromidia.svg");
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: left center;
