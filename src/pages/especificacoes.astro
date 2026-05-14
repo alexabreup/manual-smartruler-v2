@@ -33,8 +33,17 @@ import Footer from "../components/Footer.astro";
       <h2
         class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
       >
-        1. Resumo Técnico (Data Sheet)
+        1. Resumo Técnico
       </h2>
+
+      <div class="tech-illustration-container mb-6">
+        <img
+          src="/smartruler-vistas.png"
+          alt="Desenho Técnico Smart Ruler SMR-V2"
+          class="tech-illustration"
+        />
+      </div>
+
       <p>
         Abaixo, os parâmetros técnicos consolidados do Smart Ruler SMR-V2 para
         referência rápida em campo:
@@ -548,6 +557,23 @@ import Footer from "../components/Footer.astro";
     color: var(--primary);
     font-size: 11px;
     white-space: nowrap;
+  }
+
+  /* Technical Illustration */
+  .tech-illustration-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white; /* Contrast for technical drawing */
+    padding: 24px;
+    border: 1px solid var(--border-color);
+  }
+
+  .tech-illustration {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
   }
 
   /* === Content Styles === */

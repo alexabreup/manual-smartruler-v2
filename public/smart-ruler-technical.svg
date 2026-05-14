@@ -1,0 +1,99 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#ffffff" />
+  
+  <!-- Front View -->
+  <g transform="translate(50, 40)">
+    <rect x="0" y="0" width="85" height="420" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+    <!-- IEC Input -->
+    <rect x="20" y="30" width="45" height="35" rx="3" fill="none" stroke="#333" stroke-width="1" />
+    <path d="M 28 40 L 57 40 L 57 60 L 28 60 Z" fill="none" stroke="#333" />
+    <!-- Brazilian Outlets (4x) -->
+    <g transform="translate(18, 90)">
+      <rect x="0" y="0" width="50" height="65" rx="6" fill="none" stroke="#333" stroke-width="1" />
+      <path d="M 15 25 Q 25 15 35 25 Q 35 45 25 55 Q 15 45 15 25 Z" fill="none" stroke="#ccc" stroke-width="0.5" />
+      <circle cx="25" cy="28" r="3" fill="#333" />
+      <circle cx="18" cy="45" r="3" fill="#333" />
+      <circle cx="32" cy="45" r="3" fill="#333" />
+    </g>
+    <g transform="translate(18, 170)">
+      <rect x="0" y="0" width="50" height="65" rx="6" fill="none" stroke="#333" stroke-width="1" />
+      <circle cx="25" cy="28" r="3" fill="#333" />
+      <circle cx="18" cy="45" r="3" fill="#333" />
+      <circle cx="32" cy="45" r="3" fill="#333" />
+    </g>
+    <g transform="translate(18, 250)">
+      <rect x="0" y="0" width="50" height="65" rx="6" fill="none" stroke="#333" stroke-width="1" />
+      <circle cx="25" cy="28" r="3" fill="#333" />
+      <circle cx="18" cy="45" r="3" fill="#333" />
+      <circle cx="32" cy="45" r="3" fill="#333" />
+    </g>
+    <g transform="translate(18, 330)">
+      <rect x="0" y="0" width="50" height="65" rx="6" fill="none" stroke="#333" stroke-width="1" />
+      <circle cx="25" cy="28" r="3" fill="#333" />
+      <circle cx="18" cy="45" r="3" fill="#333" />
+      <circle cx="32" cy="45" r="3" fill="#333" />
+    </g>
+    <text x="42.5" y="440" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#666">VISTA FRONTAL</text>
+  </g>
+
+  <!-- Side View -->
+  <g transform="translate(180, 40)">
+    <rect x="0" y="0" width="45" height="420" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+    <!-- Protrusions -->
+    <rect x="-8" y="95" width="8" height="55" fill="#f0f0f0" stroke="#333" />
+    <rect x="-8" y="175" width="8" height="55" fill="#f0f0f0" stroke="#333" />
+    <rect x="-8" y="255" width="8" height="55" fill="#f0f0f0" stroke="#333" />
+    <rect x="-8" y="335" width="8" height="55" fill="#f0f0f0" stroke="#333" />
+    <text x="22.5" y="440" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#666">VISTA LATERAL</text>
+  </g>
+
+  <!-- Back/Rear View -->
+  <g transform="translate(270, 40)">
+    <rect x="0" y="0" width="85" height="420" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+    <!-- Logo EM -->
+    <path d="M 25 50 L 60 50 L 60 65 L 45 65 L 45 75 L 60 75 L 60 90 L 25 90 Z" fill="none" stroke="#333" stroke-width="2" />
+    <path d="M 32 58 L 53 58 L 53 62 L 32 62 Z" fill="#333" />
+    <text x="42.5" y="440" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#666">VISTA TRASEIRA</text>
+  </g>
+
+  <!-- Connectivity/Port View -->
+  <g transform="translate(400, 40)">
+    <rect x="0" y="0" width="85" height="420" rx="2" fill="none" stroke="#333" stroke-width="1.5" />
+    <!-- Terminal Block -->
+    <rect x="25" y="280" width="35" height="30" fill="#e8f5e9" stroke="#4caf50" stroke-width="1.5" />
+    <line x1="36" y1="280" x2="36" y2="310" stroke="#4caf50" />
+    <line x1="48" y1="280" x2="48" y2="310" stroke="#4caf50" />
+    <text x="42.5" y="270" font-family="monospace" font-size="8" text-anchor="middle" fill="#4caf50">SENSOR / RS485</text>
+    
+    <!-- Ethernet Port -->
+    <rect x="27" y="330" width="30" height="30" fill="#eee" stroke="#333" stroke-width="1.5" />
+    <rect x="32" y="335" width="20" height="15" fill="#000" />
+    <text x="42.5" y="375" font-family="monospace" font-size="8" text-anchor="middle" fill="#333">RJ45 ETHERNET</text>
+    
+    <text x="42.5" y="440" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#666">CONECTIVIDADE</text>
+  </g>
+
+  <!-- Title & Specs -->
+  <g transform="translate(550, 40)">
+    <text x="0" y="30" font-family="Audiowide, sans-serif" font-size="20" fill="#1a1a1a">DETALHAMENTO TÉCNICO</text>
+    <text x="0" y="55" font-family="sans-serif" font-size="14" fill="#666">SMART RULER SMR-V2</text>
+    <line x1="0" y1="70" x2="200" y2="70" stroke="#ED712E" stroke-width="3" />
+    
+    <g font-family="monospace" font-size="11" fill="#444">
+      <text x="0" y="100">● ENTRADA: 127V/220V (BIVOLT)</text>
+      <text x="0" y="125">● SAÍDAS: 4x NBR 14136 (10A)</text>
+      <text x="0" y="150">● CONTROLE: INDIVIDUAL POR RELÉ</text>
+      <text x="0" y="175">● REDE: ETHERNET RJ45</text>
+      <text x="0" y="200">● MONITORAMENTO: PING & WATCHDOG</text>
+    </g>
+    
+    <rect x="0" y="350" width="180" height="80" rx="4" fill="#f8f9fa" stroke="#dee2e6" />
+    <text x="90" y="375" font-family="sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#333">CERTIFICAÇÃO INDUSTRIAL</text>
+    <text x="90" y="400" font-family="monospace" font-size="12" text-anchor="middle" fill="#ED712E">ELETROMIDIA IoT HUB</text>
+  </g>
+
+  <!-- Technical grid/lines -->
+  <path d="M 50 480 L 750 480" stroke="#eee" stroke-width="1" />
+  <text x="400" y="495" font-family="monospace" font-size="8" text-anchor="middle" fill="#bbb">DESENHO TÉCNICO // REF: IMAGEM_USUARIO_0514 // ESCALA 1:1</text>
+</svg>
