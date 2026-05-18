@@ -116,236 +116,27 @@ import Footer from "../components/Footer.astro";
             </tr>
           </tbody>
         </table>
+      </div>
 
-        <hr class="divider" />
+      <hr class="divider" />
 
-        <h2
-          class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
-        >
-          2. Arquitetura de Hardware e Relés
-        </h2>
-        <p>
-          O SMR utiliza quatro relés para controle de energia. A lógica de
-          hardware é <strong>padronizada</strong> para todos os pinos para garantir
-          segurança e previsibilidade.
-        </p>
-
-        <!-- Logic Display -->
-        <div class="logic-grid">
-          <div class="logic-card logic-on">
-            <div class="logic-bit font-display">0</div>
-            <div class="logic-state font-mono">LOW — ENERGIA LIGADA</div>
-            <div class="logic-desc">
-              220V liberado. É o estado de repouso padrão. Relé ativado,
-              circuito fechado.
-            </div>
-          </div>
-          <div class="logic-card logic-off">
-            <div class="logic-bit font-display">1</div>
-            <div class="logic-state font-mono">HIGH — ENERGIA CORTADA</div>
-            <div class="logic-desc">
-              Desligado ou em ciclo de Reset. Relé desativado, circuito aberto.
-            </div>
-          </div>
-        </div>
-
-        <h3
-          class="font-display font-bold uppercase text-on-surface mb-4 text-sm"
-        >
-          Mapeamento de Pinos
-        </h3>
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Componente</th>
-                <th>Pino GPIO</th>
-                <th>Função de Controle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Relé Modem (K1)</strong></td>
-                <td><code>GPIO 14</code></td>
-                <td>Controle de energia do Modem/Gateway</td>
-              </tr>
-              <tr>
-                <td><strong>Relé PC (K2)</strong></td>
-                <td><code>GPIO 32</code></td>
-                <td>Controle de energia do PC/NUC</td>
-              </tr>
-              <tr>
-                <td><strong>Relé Auxiliar (K3)</strong></td>
-                <td><code>GPIO 12</code></td>
-                <td>Saída auxiliar programável</td>
-              </tr>
-              <tr>
-                <td><strong>Relé Auxiliar (K4)</strong></td>
-                <td><code>GPIO 33</code></td>
-                <td>Saída auxiliar programável</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <hr class="divider" />
-
-        <h2
-          class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
-        >
-          3. Monitoramento de Conectividade
-        </h2>
-        <p>
-          O sistema opera três tarefas independentes em paralelo (FreeRTOS):
-        </p>
-
-        <div class="monitoring-section">
-          <!-- Modem Monitoring -->
-          <div class="monitor-card">
-            <div class="monitor-header">
-              <span class="material-symbols-outlined">router</span>
-              <h3 class="font-display">
-                A. Monitoramento do Modem (Conectividade Global)
-              </h3>
-            </div>
-            <ol class="ordered-list">
-              <li>
-                <strong>Ping Local:</strong> Testa o IP do Gateway (<code
-                  >modemIP</code
-                >).
-              </li>
-              <li>
-                <strong>Ping Internet:</strong> Se o local responder, testa o IP <code
-                  >8.8.8.8</code
-                >.
-              </li>
-              <li>
-                <strong>Reset Automático:</strong> Se houver falha total, o SMR corta
-                a energia do modem por <strong>5 segundos</strong> e religa.
-              </li>
-              <li>
-                <strong>Proteção:</strong> Aguarda <strong>5 minutos</strong> entre
-                resets e <strong>3 minutos</strong> após um reset (<em
-                  >cooldown</em
-                >) antes de testar novamente.
-              </li>
-            </ol>
-          </div>
-          <!-- PC Monitoring -->
-          <div class="monitor-card">
-            <div class="monitor-header">
-              <span class="material-symbols-outlined">computer</span>
-              <h3 class="font-display">
-                B. Monitoramento do PC (Monitoramento Garantido)
-              </h3>
-            </div>
-            <p>O SMR utiliza um sistema de "Identidade de Máquina":</p>
-            <ol class="ordered-list">
-              <li>
-                <strong>Discovery (Busca):</strong> Escaneia a rede via ARP.
-              </li>
-              <li>
-                <strong>ID Verification:</strong> Ao achar um IP, o SMR busca o arquivo
-                <code>dispositivo.json</code> no PC.
-              </li>
-              <li>
-                <strong>Validação:</strong> O monitoramento só começa se o <code
-                  >deviceID</code
-                > for encontrado e validado.
-              </li>
-              <li>
-                <strong>Watchdog de Rede:</strong> Se o PC (conhecido pelo ID) falhar
-                <strong>3 vezes</strong>, o SMR executa o reset físico da tomada
-                K2.
-              </li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="attention-text">
-          <strong>Sistema Operacional:</strong> FreeRTOS com três tarefas independentes
-          em paralelo — <em>Connectivity</em>, <em>Status Reporting</em> e <em
-            >Commands Handler</em
-          >.
-        </div>
-
-        <hr class="divider" />
-
-        <h2
-          class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
-        >
-          4. Watchdog (WDT) de Sistema
-        </h2>
-        <p>
-          Para garantir que o SMR nunca "trave", implementamos um Watchdog de
-          hardware com timeout de <strong>45 segundos</strong>:
-        </p>
-
-        <div class="wdt-panel">
-          <div class="wdt-top">
-            <div>
-              <div class="text-10px text-on-surface-variant font-mono">
-                HEARTBEAT TIMEOUT
-              </div>
-              <div class="wdt-value font-display text-primary">45 SEC</div>
-            </div>
-            <div class="wdt-action">
-              <div class="text-10px text-on-surface-variant font-mono">
-                AÇÃO EM FALHA
-              </div>
-              <div class="wdt-value font-display text-error">REBOOT</div>
-            </div>
-          </div>
-          <div class="wdt-bar">
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment active"></div>
-            <div class="wdt-segment"></div>
-            <div class="wdt-segment"></div>
-            <div class="wdt-segment"></div>
-          </div>
-          <div class="wdt-tasks">
-            <div class="wdt-task">
-              <span class="wdt-dot"></span>
-              <span class="font-mono text-10px uppercase"
-                >Task: Connectivity</span
-              >
-            </div>
-            <div class="wdt-task">
-              <span class="wdt-dot"></span>
-              <span class="font-mono text-10px uppercase"
-                >Task: Status Reporting</span
-              >
-            </div>
-            <div class="wdt-task">
-              <span class="wdt-dot"></span>
-              <span class="font-mono text-10px uppercase"
-                >Task: Commands Handler</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <ul class="bullet-list">
+      <h2
+        class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
+      >
+        2. Detalhamento das Conexões
+      </h2>
+        <ul class="bullet-list mb-8">
           <li>
-            <strong>Monitoramento de Tarefas:</strong> Todas as tarefas (Connectivity,
-            Status, Commands) devem "avisar" ao WDT que estão vivas.
+            <strong>Conexão do Modem:</strong> Conecte o modem do MUB na segunda tomada, identificada com a legenda "MODEM".
           </li>
           <li>
-            <strong>Ação de Falha:</strong> Se qualquer tarefa travar por mais de
-            <strong>45 segundos</strong>, o hardware do ESP32 força um <strong
-              >Reboot Imediato</strong
-            >.
+            <strong>Conexão do PC:</strong> Conecte o PC NUC do MUB na terceira tomada, claramente marcada com a legenda "PC".
           </li>
           <li>
-            <strong>Proteção de Loops:</strong> Em processos longos (como varredura
-            de rede /24), o WDT é resetado internamente para evitar disparos falsos.
+            <strong>Tomada de Serviço "ENTRADA DIRETA":</strong> A primeira tomada oferece energia constante e está disponível para uso por técnicos em campo para tarefas temporárias.
+          </li>
+          <li>
+            <strong>"TOMADA 3":</strong> A última tomada é reservada para novas implementações e dispositivos futuros que serão integrados à plataforma IoT Hub da Eletromidia.
           </li>
         </ul>
 
@@ -354,55 +145,34 @@ import Footer from "../components/Footer.astro";
         <h2
           class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
         >
-          5. Comandos Aceitos (Servidor → SMR)
+          3. Funcionalidades da Smart Ruler
         </h2>
         <p>
-          Os comandos são enviados pelo servidor central para o dispositivo SMR.
-          Cada comando altera o estado de um relé específico.
+          A Smart Ruler é o centro de controle inteligente do seu MUB, oferecendo:
         </p>
 
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Comando</th>
-                <th>Valor</th>
-                <th>Ação Resultante</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>K1</strong></td>
-                <td><code>0</code></td>
-                <td><strong>Reset do Modem</strong> (Corte 5s → ON)</td>
-              </tr>
-              <tr>
-                <td><strong>K2</strong></td>
-                <td><code>0</code></td>
-                <td><strong>Reset do PC</strong> (Corte 5s → ON)</td>
-              </tr>
-              <tr>
-                <td><strong>K3</strong></td>
-                <td><code>0</code></td>
-                <td><strong>Ligar</strong> Tomada Auxiliar</td>
-              </tr>
-              <tr>
-                <td><strong>K3</strong></td>
-                <td><code>1</code></td>
-                <td><strong>Desligar</strong> Tomada Auxiliar</td>
-              </tr>
-              <tr>
-                <td><strong>K4</strong></td>
-                <td><code>0</code></td>
-                <td><strong>Ligar</strong> Tomada Auxiliar</td>
-              </tr>
-              <tr>
-                <td><strong>K4</strong></td>
-                <td><code>1</code></td>
-                <td><strong>Desligar</strong> Tomada Auxiliar</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="logic-grid">
+          <div class="logic-card logic-on">
+            <div class="logic-bit font-display"><span class="material-symbols-outlined" style="font-size: inherit;">power</span></div>
+            <div class="logic-state font-mono">Controle Independente</div>
+            <div class="logic-desc mt-2">
+              Cada uma das quatro tomadas (exceto a "ENTRADA DIRETA") pode ser acionada e desativada de forma independente.
+            </div>
+          </div>
+          <div class="logic-card logic-on">
+            <div class="logic-bit font-display"><span class="material-symbols-outlined" style="font-size: inherit;">wifi</span></div>
+            <div class="logic-state font-mono">Acionamento Remoto</div>
+            <div class="logic-desc mt-2">
+              Gerencie suas tomadas de qualquer lugar através da plataforma IoT Hub da Eletromidia, otimizando o consumo de energia e a operação dos seus equipamentos.
+            </div>
+          </div>
+          <div class="logic-card logic-on">
+            <div class="logic-bit font-display"><span class="material-symbols-outlined" style="font-size: inherit;">monitoring</span></div>
+            <div class="logic-state font-mono">Monitoramento</div>
+            <div class="logic-desc mt-2">
+              Acompanhe o status e o consumo das tomadas (se aplicável ao modelo) diretamente pela plataforma.
+            </div>
+          </div>
         </div>
 
         <hr class="divider" />
@@ -410,40 +180,32 @@ import Footer from "../components/Footer.astro";
         <h2
           class="font-display font-bold uppercase text-primary mt-8 mb-4 text-xl"
         >
-          6. Avisos de Segurança e Operação
+          4. Dicas de Segurança e Manutenção
         </h2>
 
-        <div class="safety-section">
+        <div class="safety-section mb-8">
           <div class="safety-item">
             <span class="safety-num font-display">01</span>
             <p>
-              O dispositivo deve ser utilizado dentro dos escopos de <strong
-                >temperatura e umidade</strong
-              > prescritos para evitar danos.
+              <strong>Certifique-se sempre</strong> de que o cabo de força esteja em boas condições e que o fusível esteja íntegro para evitar sobrecargas.
             </p>
           </div>
           <div class="safety-item">
             <span class="safety-num font-display">02</span>
             <p>
-              Certifique-se de que a sequência de linha e voltagem (<strong
-                >220V</strong
-              >) esteja correta conforme o mapeamento dos relés.
+              Em caso de dúvidas ou problemas, consulte o <strong>suporte técnico da Eletromidia</strong>.
             </p>
           </div>
           <div class="safety-item">
             <span class="safety-num font-display">03</span>
             <p>
-              O <strong>Watchdog de Hardware</strong> forçará um Reboot Imediato se
-              qualquer tarefa travar por mais de <strong>45 segundos</strong>.
+              Evite expor o dispositivo a <strong>umidade excessiva</strong> ou temperaturas extremas.
             </p>
           </div>
-          <div class="safety-item">
-            <span class="safety-num font-display">04</span>
-            <p>
-              <strong>Não desmonte</strong> o dispositivo arbitrariamente para não
-              comprometer a segurança elétrica e a integridade do firmware.
-            </p>
-          </div>
+        </div>
+
+        <div class="attention-text mb-8">
+          Esperamos que este manual ajude na rápida e eficiente instalação da sua Smart Ruler. Para mais informações ou suporte, acesse nossa central de ajuda online ou entre em contato com nossa equipe.
         </div>
       </div>
 
